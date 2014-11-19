@@ -1,4 +1,4 @@
 rails-depot-application
 =======================
 
-Depot Application from the Agile Web Development with Rails Book
+Sample E-Commerce Application Developed with Ruby 2 and Rails 4. It's a simple web-based shopping cart application called Depot.
