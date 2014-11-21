@@ -10,6 +10,11 @@
     color: #226;
     border-bottom: 3px solid #77d;
   }
+  .views_count {
+    display: inline-block;
+    float: right;
+    margin-top: 5px;
+  }
   /* An entry in the store catalog */
   .entry {
     overflow: auto;

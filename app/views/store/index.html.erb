@@ -2,6 +2,10 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
+<% if session[:counter] > 5 %>
+  <p class="views_count"><strong>Views:</strong> <%= pluralize(session[:counter], "view") %></p>
+<% end %>
+
 <h1>Catalog</h1>
 
 <% cache ['store', Product.latest] do %>
