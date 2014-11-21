@@ -32,7 +32,7 @@ class ProductTest < ActiveSupport::TestCase
   # Helper method to test that we're validating the URL of the image
   def new_product(image_url)
     Product.new(
-        title: "",
+        title: "My Book Title",
         description: "yyy",
         price: 1,
         image_url: image_url)
@@ -45,7 +45,7 @@ class ProductTest < ActiveSupport::TestCase
       assert new_product(image_url).valid?, "#{image_url} should be valid"
     end
     bad.each do |image_url|
-      assert new_product(image_url).valid?, "#{image_url} shouldn't be valid"
+      assert new_product(image_url).invalid?, "#{image_url} shouldn't be valid"
     end
   end
 
