@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  fixtures :carts
+
+  test "adding different products should extend line items" do
+
+  end
+
+  test "adding same product should increase line item quantity" do
+
+  end
+
 end
