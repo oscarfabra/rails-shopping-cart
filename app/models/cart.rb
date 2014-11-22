@@ -3,7 +3,6 @@ class Cart < ActiveRecord::Base
 
   # Adds a product to cart. Create a new LineItem if it doesn't exist yet.
   def add_product(product_id)
-    product = Product.find_by(product_id: product_id)
     current_item = line_items.find_by(product_id: product_id)
     if current_item
       current_item.quantity += 1
