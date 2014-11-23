@@ -6,16 +6,22 @@
 <!-- Displays cart table. -->
 <table>
   <% @cart.line_items.each do |item| %>
-    <tr>
-      <td><%= item.quantity %> &times;</td>
-      <td><%= item.product.title %></td>
-      <td class="item_price"><%= number_to_currency(item.total_price) %></td>
-    </tr>
+    <%= form_for item, html: { method: :delete } do |f|%>
+      <tr>
+        <td>
+          <%= f.submit value: "Update Quantity" %>
+          <%= f.text_field :quantity, size: 2 %>
+        </td>
+        <td><%= item.product.title %></td>
+        <td class="item_price" ><%= number_to_currency(item.total_price) %></td>
+      </tr>
+    <% end %>
   <% end %>
 
   <tr class="total_line">
     <td colspan="2">Total</td>
     <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+    <td>&nbsp;</td>
   </tr>
 </table>
 

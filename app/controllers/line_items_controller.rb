@@ -47,22 +47,34 @@ class LineItemsController < ApplicationController
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to @line_item, notice: 'Cart updated.' }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.json { render json: @line_item.errors,
+                             status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /line_items/1
   # DELETE /line_items/1.json
+  # Removes only one item from cart. Changing quantity to 0 causes the item
+  # to be deleted.
   def destroy
-    @line_item.destroy
+    @line_item = LineItem.find(params[:id])
+
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
-      format.json { head :no_content }
+      if @line_item.update_attribute(:quantity, params[:line_item][:quantity])
+        notice = 'Item updated.'
+        if @line_item.quantity == 0
+          @line_item.destroy
+          notice = 'Item removed. You may add it again to cart at any time.'
+        end
+        format.html { redirect_to cart_url(@line_item.cart.id),
+                                  notice: notice }
+        format.json { head :no_content }
+      end
     end
   end
 
