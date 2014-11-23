@@ -39,13 +39,23 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_redirected_to line_item_path(assigns(:line_item))
   end
 
-  test "should update line_item" do
-    # Tests updating with a quantity greater than 0
-    update_quantity = 3
-    assert_no_difference(update_quantity) do
-      delete :destroy, id: @line_item, line_item: { quantity: update_quantity }
+  test "should delete line_item" do
+    # Tests updating to a quantity greater than 0
+    assert_difference('LineItem.count', 0) do
+      delete :destroy, id: @line_item, line_item: { quantity: 3 }
     end
+    assert_redirected_to cart_url(@line_item.cart.id)
 
-    assert_redirected_to line_items_path
+    # Tests updating to a negative quantity
+    assert_difference('LineItem.count', 0) do
+      delete :destroy, id: @line_item, line_item: { quantity: -1 }
+    end
+    assert_redirected_to cart_url(@line_item.cart.id)
+
+    # Tests updating to a quantity of 0
+    assert_difference('LineItem.count', -1) do
+      delete :destroy, id: @line_item, line_item: { quantity: 0 }
+    end
+    assert_redirected_to cart_url(@line_item.cart.id)
   end
 end
