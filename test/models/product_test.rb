@@ -12,7 +12,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:image_url].any?
   end
 
-  test "product price must be positive" do
+  test "product price must be positive and less than 10,000" do
     product = Product.new(
         title: "My Book Title",
         description: "yyy",
@@ -27,6 +27,8 @@ class ProductTest < ActiveSupport::TestCase
                  product.errors[:price]
     product.price = 1
     assert product.valid?
+    product.price = 10001
+    assert product.invalid?, "product price must be no greater than 10,000"
   end
 
   # Helper method to test that we're validating the URL of the image
@@ -57,5 +59,15 @@ class ProductTest < ActiveSupport::TestCase
         image_url: "fred.gif")
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+  end
+
+  test "image url must be unique" do
+    product = Product.new(
+        title: "My Book Title",
+        description: "yyy",
+        price: 1,
+        image_url: "ruby.png")  # A image_url already usec in fixtures
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:image_url]
   end
 end
