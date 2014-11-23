@@ -39,9 +39,11 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_redirected_to line_item_path(assigns(:line_item))
   end
 
-  test "should destroy line_item" do
-    assert_difference('LineItem.count', -1) do
-      delete :destroy, id: @line_item
+  test "should update line_item" do
+    # Tests updating with a quantity greater than 0
+    update_quantity = 3
+    assert_no_difference(update_quantity) do
+      delete :destroy, id: @line_item, line_item: { quantity: update_quantity }
     end
 
     assert_redirected_to line_items_path

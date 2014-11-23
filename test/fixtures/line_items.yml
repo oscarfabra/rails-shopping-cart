@@ -2,16 +2,16 @@
 
 li_coffee:
   product_id: 2
-  cart_id: 3git status
+  cart_id: 3
   quantity: 2
   price: 36.00
 
-#li_ruby:
-#  product_id: 3
-#  cart_id: 1
-#  quantity: 2
-#  price: 49.95
-#
+li_ruby:
+  product_id: 3
+  cart_id: 1
+  quantity: 2
+  price: 49.95
+
 #li_rails:
 #  product_id: 4
 #  cart_id: 1

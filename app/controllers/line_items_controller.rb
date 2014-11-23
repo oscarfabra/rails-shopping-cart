@@ -62,18 +62,22 @@ class LineItemsController < ApplicationController
   # Removes only one item from cart. Changing quantity to 0 causes the item
   # to be deleted.
   def destroy
-    @line_item = LineItem.find(params[:id])
-
-    respond_to do |format|
-      if @line_item.update_attribute(:quantity, params[:line_item][:quantity])
-        notice = 'Item updated.'
-        if @line_item.quantity == 0
-          @line_item.destroy
-          notice = 'Item removed. You may add it again to cart at any time.'
+    if params[:line_item][:quantity].to_i < 0
+      redirect_to cart_url(@line_item.cart.id),
+                  notice: "A quantity can't be negative."
+    else
+      @line_item = LineItem.find(params[:id])
+      respond_to do |format|
+        if @line_item.update_attribute(:quantity, params[:line_item][:quantity])
+          notice = 'Product updated.'
+          if @line_item.quantity == 0
+            @line_item.destroy
+            notice = 'Product removed. You may add it again at any time.'
+          end
+          format.html { redirect_to cart_url(@line_item.cart.id),
+                                    notice: notice }
+          format.json { head :no_content }
         end
-        format.html { redirect_to cart_url(@line_item.cart.id),
-                                  notice: notice }
-        format.json { head :no_content }
       end
     end
   end
