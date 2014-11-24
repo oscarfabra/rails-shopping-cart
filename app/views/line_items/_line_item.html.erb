@@ -1,0 +1,11 @@
+<!-- Shows a line item in the cart. -->
+<%= form_for line_item, html: { method: :delete } do |f|%>
+  <tr>
+    <td>
+      <%= f.submit value: "Update Quantity" %>
+      <%= f.text_field :quantity, size: 2 %>
+    </td>
+    <td><%= line_item.product.title %></td>
+    <td class="item_price" ><%= number_to_currency(line_item.total_price) %></td>
+  </tr>
+<% end %>
