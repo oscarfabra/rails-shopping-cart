@@ -1,18 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: 7
-  title: MyString
-  description: MyText
-  image_url: MyString
-  price: 9.99
-
-two:
-  id: 6
-  title: Two
-  description: MyText
-  image_url: MyString
-  price: 9.99
+#one:
+#  id: 7
+#  title: MyString
+#  description: MyText
+#  image_url: MyString
+#  price: 9.99
+#
+#two:
+#  id: 6
+#  title: Two
+#  description: MyText
+#  image_url: MyString
+#  price: 9.99
 
 coffee:
   id: 2

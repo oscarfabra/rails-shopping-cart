@@ -9,7 +9,7 @@ li_coffee:
 li_ruby:
   product_id: 3
   cart_id: 3
-  quantity: 2
+  quantity: 1
   price: 49.95
 
 #li_rails:
