@@ -1,6 +1,10 @@
 <!-- Shows a line item in the cart. -->
 <%= form_for line_item, html: { method: :delete } do |f|%>
-  <tr>
+  <% if line_item == @current_item %>
+    <tr id="current_item">
+  <% else %>
+    <tr>
+  <% end %>
     <td id="update_qty">
       <%= f.submit value: "Update Qty" %>
       <%= f.text_field :quantity, size: 2 %>
