@@ -8,11 +8,14 @@
 </head>
 <body class="<%= controller.controller_name %>">
   <div id="banner">
-    <%= image_tag("logo.png") %>
+    <%= link_to image_tag("logo.png", id:"logo_image"), store_path %>
     <%= @page_title || "Sample E-Commerce Store" %>
   </div>
   <div id="columns">
     <div id="side">
+      <div id="cart">
+        <%= render @cart %>
+      </div>
       <ul>
         <li><a href="<%= store_path %>">Home</a></li>
         <li><a href="#">Questions</a></li>
