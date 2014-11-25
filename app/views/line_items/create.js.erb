@@ -1,7 +1,9 @@
 // Adds effect to cart if it's the first item to appear.
-if ($('#cart tr').is(':hidden')) { $('#cart').show('blind', 1000); }
+if ($('#cart tr').is(':hidden')) {
+    $('#cart').show('blind', 1000);
+}
 // Shows cart on side bar using js.
-$('#cart').html("<%= escape_javascript render @cart %>");
+$('#cart').html("<%= escape_javascript render @line_item.cart %>");
 // Adds effect to line item that is being added.
 $('#current_item').css({'background-color':'#88ff88'}).
     animate({'background-color':'#114411'}, 1000);

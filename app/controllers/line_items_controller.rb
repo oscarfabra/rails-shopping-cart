@@ -69,6 +69,7 @@ class LineItemsController < ApplicationController
                   notice: "A quantity can't be negative."
     else
       @line_item = LineItem.find(params[:id])
+      @cart = @line_item.cart
       respond_to do |format|
         if @line_item.update_attribute(:quantity, params[:line_item][:quantity])
           notice = 'Product updated.'
@@ -77,6 +78,11 @@ class LineItemsController < ApplicationController
             notice = 'Product removed. You may add it again at any time.'
           end
           format.html { redirect_to store_url, notice: notice }
+          format.js { @current_item = @line_item }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to store_url, notice: notice }
+          format.js { @current_item = @line_item }
           format.json { head :no_content }
         end
       end

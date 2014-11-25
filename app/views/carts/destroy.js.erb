@@ -1,4 +1,6 @@
 // Adds hide effect to cart when it's emptied
-if ($('#cart tr').length >= 1) { $('#cart').hide("blind", 1500); }
+if ($('#cart tr').length >= 1) {
+  $('#cart').hide("blind", 1500);
+}
 // Removes everything except the total line
 $('#cart tr').not('.total_line').remove();

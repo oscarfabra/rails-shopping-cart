@@ -1,11 +1,11 @@
 <!-- Shows a line item in the cart. -->
-<%= form_for line_item, html: { method: :delete } do |f|%>
+<%= form_for line_item, html: { method: :delete }, remote: true do |f|%>
   <% if line_item == @current_item %>
     <tr id="current_item">
   <% else %>
     <tr>
   <% end %>
-    <td id="update_qty"><%= f.submit value: "Qty" %></td>
+    <td id="update_qty"><%= f.submit value: "Set" %></td>
     <td id="side_qty"><%= f.text_field :quantity, size: 1 %></td>
     <td><%= line_item.product.title %></td>
     <td class="item_price" ><%= number_to_currency(line_item.total_price) %></td>
