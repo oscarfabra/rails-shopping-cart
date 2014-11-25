@@ -1,5 +1,5 @@
 // Adds effect to cart if it's the first item to appear.
-if ($('#cart tr').is(':hidden')) {
+if ($('#cart tr').length == 1) {
     $('#cart').show('blind', 1000);
 }
 // Shows cart on side bar using js.

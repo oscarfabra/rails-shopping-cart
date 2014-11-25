@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_line_item
 
@@ -69,7 +69,7 @@ class LineItemsController < ApplicationController
                   notice: "A quantity can't be negative."
     else
       @line_item = LineItem.find(params[:id])
-      @cart = @line_item.cart
+      # @cart = @line_item.cart
       respond_to do |format|
         if @line_item.update_attribute(:quantity, params[:line_item][:quantity])
           notice = 'Product updated.'
@@ -77,10 +77,6 @@ class LineItemsController < ApplicationController
             @line_item.destroy
             notice = 'Product removed. You may add it again at any time.'
           end
-          format.html { redirect_to store_url, notice: notice }
-          format.js { @current_item = @line_item }
-          format.json { head :no_content }
-        else
           format.html { redirect_to store_url, notice: notice }
           format.js { @current_item = @line_item }
           format.json { head :no_content }
