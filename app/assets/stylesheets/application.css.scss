@@ -40,14 +40,14 @@
 #columns {
   background: #141;
   #main {
-    margin-left: 17em;
+    margin-left: 22em;
     padding: 1em;
     background: white;
   }
   #side {
     float: left;
     padding: 1em 2em;
-    width: 13em;
+    width: 18em;
     background: #141;
 
     form, div {
@@ -65,10 +65,10 @@
         border-top: 1px dotted #595;
         border-bottom: 1px dotted #595;
         margin-bottom: 10px;
-      }
-      #update_qty {
-        display: none;
-        font-size: x-small;
+        #update_qty {
+          padding-top: 1px;
+          vertical-align: middle;
+        }
       }
     }
 

@@ -76,8 +76,7 @@ class LineItemsController < ApplicationController
             @line_item.destroy
             notice = 'Product removed. You may add it again at any time.'
           end
-          format.html { redirect_to cart_url(@line_item.cart.id),
-                                    notice: notice }
+          format.html { redirect_to store_url, notice: notice }
           format.json { head :no_content }
         end
       end
