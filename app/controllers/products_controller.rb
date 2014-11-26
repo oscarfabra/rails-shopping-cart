@@ -62,6 +62,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  # Creates an Atom feed with the details of the last buyer.
+  def who_bought
+    @product = Product.find(params[:id])
+    @latest_order = @product.orders.order(:updated_at).last
+    if stale?(@latest_order)
+      respond_to do |format|
+        # Rails looks for a template named who_bought.atom.builder
+        format.atom
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
