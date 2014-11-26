@@ -55,7 +55,7 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_difference('LineItem.count', 0) do
       delete :destroy, id: @line_item, line_item: { quantity: 3 }
     end
-    assert_redirected_to cart_url(@line_item.cart.id)
+    assert_redirected_to store_url
 
     # Tests updating to a negative quantity
     assert_difference('LineItem.count', 0) do
@@ -67,6 +67,6 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_difference('LineItem.count', -1) do
       delete :destroy, id: @line_item, line_item: { quantity: 0 }
     end
-    assert_redirected_to cart_url(@line_item.cart.id)
+    assert_redirected_to store_url
   end
 end
