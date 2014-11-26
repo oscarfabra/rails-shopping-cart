@@ -11,6 +11,7 @@ li_ruby:
   cart_id: 3
   quantity: 1
   price: 49.95
+  order: one
 
 #li_rails:
 #  product_id: 4
