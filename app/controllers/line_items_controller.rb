@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create, :destroy]
+  before_action :set_cart, only: [:create, :destroy, :decrement]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_line_item
 
@@ -44,6 +44,55 @@ class LineItemsController < ApplicationController
     end
   end
 
+  # DELETE /line_items/1
+  # DELETE /line_items/1.json
+  # Removes only one item from cart. Changing quantity to 0 causes the item
+  # to be deleted.
+  def destroy
+    if params[:line_item][:quantity].to_i < 0
+      redirect_to cart_url(@line_item.cart.id),
+                  notice: "A quantity can't be negative."
+    else
+      @line_item = LineItem.find(params[:id])
+      respond_to do |format|
+        quantity = params[:line_item][:quantity]
+        if quantity && @line_item.update_attribute(:quantity, quantity)
+          @line_item.save!
+          format.html { redirect_to store_url }
+          format.js { @current_item = @line_item }
+          format.json { head :no_content }
+          if @line_item.quantity == 0
+            @line_item.destroy
+          end
+        end
+      end
+    end
+  end
+
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def decrement
+
+    # 1st way: decrement through method in @cart
+    @line_item = @cart.decrement_line_item_quantity(params[:id]) # passing in line_item.id
+
+    # 2nd way: decrement through method in @line_item
+    #@line_item = @cart.line_items.find_by_id(params[:id])
+    #@line_item = @line_item.decrement_quantity(@line_item.id)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item decremented.' }
+        format.js { @current_item = @line_item }
+        format.json { head :ok }
+      else
+        format.html { redirect_to store_url, notice: 'Could not decrement item.' }
+        format.js {@current_item = @line_item }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
@@ -55,32 +104,6 @@ class LineItemsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @line_item.errors,
                              status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /line_items/1
-  # DELETE /line_items/1.json
-  # Removes only one item from cart. Changing quantity to 0 causes the item
-  # to be deleted.
-  def destroy
-    if params[:line_item][:quantity].to_i < 0
-      redirect_to cart_url(@line_item.cart.id),
-                  notice: "A quantity can't be negative."
-    else
-      @line_item = LineItem.find(params[:id])
-      # @cart = @line_item.cart
-      respond_to do |format|
-        if @line_item.update_attribute(:quantity, params[:line_item][:quantity])
-          notice = 'Product updated.'
-          if @line_item.quantity == 0
-            @line_item.destroy
-            notice = 'Product removed. You may add it again at any time.'
-          end
-          format.html { redirect_to store_url, notice: notice }
-          format.js { @current_item = @line_item }
-          format.json { head :no_content }
-        end
       end
     end
   end
