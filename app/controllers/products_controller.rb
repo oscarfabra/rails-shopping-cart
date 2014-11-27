@@ -70,6 +70,9 @@ class ProductsController < ApplicationController
       respond_to do |format|
         # Rails looks for a template named who_bought.atom.builder
         format.atom
+        format.html { }
+        format.xml { render :xml => @product.to_xml(:include => :orders) }
+        format.json {render :json => @product.to_json(:include => :orders)}
       end
     end
   end
