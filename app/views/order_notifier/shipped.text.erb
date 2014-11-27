@@ -1,3 +1,12 @@
-OrderNotifier#shipped
+<h3>Depot App Order Shipped</h3>
+<p>
+  This email is to let you know that we've shipped your recent order:
+</p>
 
-<%= @greeting %>, find me in app/views/order_notifier/shipped.text.erb
+<table>
+  <tr>
+    <th colspan="2">Qty</th>
+    <th>Description</th>
+    <%= render @order.line_items -%>
+  </tr>
+</table>

@@ -1,25 +1,17 @@
 class OrderNotifier < ActionMailer::Base
   default from: "No Reply <depot@example.com>"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_notifier.received.subject
-  #
+  # Creates an email confirming that order has been received.
   def received(order)
     @order = order
 
-    mail to: order.email, subject: "Rails Depot App Order Confirmation"
+    mail to: order.email, subject: "Depot App Order Confirmation"
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_notifier.shipped.subject
-  #
-  def shipped
-    @greeting = "Hi"
+  # Creates an email confirming that order has been shipped.
+  def shipped(order)
+    @order = order
 
-    mail to: "to@example.org"
+    mail to: order.email, subject: "Depot App Order Shipped"
   end
 end
