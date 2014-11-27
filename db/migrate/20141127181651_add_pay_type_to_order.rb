@@ -15,7 +15,7 @@ class AddPayTypeToOrder < ActiveRecord::Migration
       end
       order.update_attribute(:payment_type_id, pay_type_id)
     end
-  endrake
+  end
 
   def down
     # Remove payment_type_id column from orders

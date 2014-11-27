@@ -28,7 +28,7 @@ class OrdersControllerTest < ActionController::TestCase
                       address: @order.address,
                       email: @order.email,
                       name: @order.name,
-                      pay_type: @order.pay_type }
+                      payment_type_id: @order.payment_type_id }
     end
 
     assert_redirected_to store_path
@@ -45,7 +45,11 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should update order" do
-    patch :update, id: @order, order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type }
+    patch :update, id: @order, order: {
+                     address: @order.address,
+                     email: @order.email,
+                     name: @order.name,
+                     pay_type: @order.pay_type }
     assert_redirected_to order_path(assigns(:order))
   end
 
