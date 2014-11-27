@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 20141126184152) do
     t.string   "pay_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "payment_type_id"
   end
+
+  add_index "orders", ["payment_type_id"], name: "index_orders_on_payment_type_id"
 
   create_table "products", force: true do |t|
     t.string   "title"

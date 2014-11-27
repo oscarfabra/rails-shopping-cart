@@ -17,12 +17,14 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     # Avoids showing an empty cart.
+    @chk_disabled = false
     if @cart.line_items.empty?
       redirect_to store_url, notice: "Your cart is empty."
       return
     end
     # Binds the order for the order#index page.
     @order = Order.new
+    @chk_disabled = true
   end
 
   # GET /orders/1/edit
