@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126184152) do
+ActiveRecord::Schema.define(version: 20141127181651) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20141126184152) do
   end
 
   add_index "orders", ["payment_type_id"], name: "index_orders_on_payment_type_id"
+
+  create_table "payment_types", force: true do |t|
+    t.string   "pay_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "title"
