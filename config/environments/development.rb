@@ -13,20 +13,11 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Raise delivery errors.
+  # Configure mailer for tests.
   config.action_mailer.raise_delivery_errors = true
-
-  # Configure mailer with Gmail.
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'example.com',
-      user_name:            'oscarfabra@gmail.com',
-      password:             'ENV["GMAIL_SMTP"]',
-      authentication:       'plain',
-      enable_starttls_auto: true
-  }
+  config.action_mailer.delivery_method = :test
+  host = 'localhost:3000'   # Local server
+  config.action_mailer.default_url_options = { host: host }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
