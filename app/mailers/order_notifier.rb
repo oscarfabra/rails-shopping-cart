@@ -1,5 +1,5 @@
 class OrderNotifier < ActionMailer::Base
-  default from: "No Reply <depot@example.com>"
+  default from: "Depot Administrator <depot@example.com>"
 
   # Creates an email confirming that order has been received.
   def received(order)
