@@ -31,7 +31,6 @@ class OrdersControllerTest < ActionController::TestCase
                       pay_type: @order.pay_type,
                       payment_type_id: @order.payment_type_id }
     end
-
     assert_redirected_to store_path
   end
 
@@ -46,12 +45,15 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should update order" do
-    patch :update, id: @order, order: {
-                     address: @order.address,
-                     email: @order.email,
-                     name: @order.name,
-                     pay_type: @order.pay_type,
-                     payment_type_id: @order.payment_type_id }
+    assert_no_difference('Order.count') do
+      patch :update, id: @order, order: {
+                       address: @order.address,
+                       email: @order.email,
+                       name: @order.name,
+                       pay_type: @order.pay_type,
+                       payment_type_id: @order.payment_type_id,
+                       ship_date: Time.now }
+    end
     assert_redirected_to order_path(assigns(:order))
   end
 
