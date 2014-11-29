@@ -5,6 +5,6 @@ class ErrorNotifier < ActionMailer::Base
   def invalid_cart(cart_id)
     @cart_id = cart_id
 
-    mail to: "admin@example.com", subject: 'Depot App Exception: Invalid Cart'
+    mail to: Rails.application.secrets.admin_email, subject: 'Depot App Exception: Invalid Cart'
   end
 end

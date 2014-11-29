@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rono23/dot_secrets.git
+  revision: aa34427df082510f0895c13849929b42094df1a6
+  specs:
+    dot_secrets (0.0.1)
+      rails (>= 4.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -111,6 +118,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  dot_secrets!
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
