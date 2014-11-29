@@ -76,9 +76,11 @@ class CartsController < ApplicationController
       params[:cart]
     end
 
-    # Shows error message if user attempts to access invalid cart
+    # Shows error message if user attempts to access invalid cart.
+    # Sends notification to depot admin user.
     def invalid_cart
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to store_url, notice: 'Invalid cart'
+      ErrorNotifier.invalid_cart("#{params[:id]}")
+      redirect_to store_url, notice: 'Invalid cart.'
     end
 end

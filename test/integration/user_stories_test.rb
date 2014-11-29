@@ -64,7 +64,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     # Check that order confirmation mail was delivered.
     mail = ActionMailer::Base.deliveries.last
     assert_equal ["dave@example.com"], mail.to
-    assert_equal 'Depot Administrator <depot@example.com>', mail[:from].value
+    assert_equal 'Depot App <depot@example.com>', mail[:from].value
     assert_equal "Depot App Order Confirmation", mail.subject
   end
 end
