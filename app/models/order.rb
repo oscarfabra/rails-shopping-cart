@@ -5,6 +5,9 @@ class Order < ActiveRecord::Base
   # Constant array shown to user as a drop-down list.
   PAYMENT_TYPES = PaymentType.select(:pay_name).map(&:pay_name)
 
+  # Guarantees that ship_date can be accessed.
+  attr_accessor :ship_date
+
   # Validates that form values are appropriate.
   validates :name, :address, :email, :payment_type_id, presence: true
   validates_presence_of :pay_type
@@ -27,5 +30,11 @@ class Order < ActiveRecord::Base
       when 'Purchase order'
         self.payment_type_id = 3
     end
+  end
+
+  # Sets the value of ship_date for this order.
+  def ship(ship_date)
+    @ship_date = ship_date
+    save!
   end
 end

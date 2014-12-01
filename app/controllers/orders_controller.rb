@@ -57,12 +57,18 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     @order = Order.find_by_id(params[:id])
-    @order.update_attributes!(order_params)
+    # puts "Ship date: #{params[:order][:ship_date]}"
 
     respond_to do |format|
-      if @order.update(order_params)
+      if @order.update!(order_params)
         # Sends a notification to the user if order is shipped.
-        OrderNotifier.shipped(@order).deliver if @order.ship_date
+        @order.ship(params[:order][:ship_date])
+        # puts "ship_date updated to: #{params[:order][:ship_date]}"
+        if @order.ship_date
+          # puts "Sending shipped email message..."
+          OrderNotifier.shipped(@order).deliver
+        end
+
 
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
