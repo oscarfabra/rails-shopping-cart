@@ -9,5 +9,4 @@ class ErrorNotifierTest < ActionMailer::TestCase
     assert_equal ["depot@example.com"], mail.from
     assert_match /Invalid cart/, mail.body.encoded
   end
-
 end

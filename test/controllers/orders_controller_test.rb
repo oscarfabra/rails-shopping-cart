@@ -61,7 +61,6 @@ class OrdersControllerTest < ActionController::TestCase
     assert_difference('Order.count', -1) do
       delete :destroy, id: @order
     end
-
     assert_redirected_to orders_path
   end
 
