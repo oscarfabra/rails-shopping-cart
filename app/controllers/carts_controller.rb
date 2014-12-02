@@ -80,7 +80,7 @@ class CartsController < ApplicationController
     # Sends notification to depot admin user.
     def invalid_cart
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      ErrorNotifier.invalid_cart("#{params[:id]}")
+      ErrorNotifier.invalid_cart("#{params[:id]}").deliver
       redirect_to store_url, notice: 'Invalid cart.'
     end
 end

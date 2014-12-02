@@ -3,6 +3,14 @@ require 'test_helper'
 class UserStoriesTest < ActionDispatch::IntegrationTest
   fixtures :products
 
+  # Initializes values for each of the tests.
+  def setup
+    # Empties mail deliveries.
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
+  end
+
   # A user goes to the index page. They select a product, adding it to their
   # cart, and check out, filling in their details on the checkout form. When
   # they submit, an order is created containing their information, along with a
@@ -169,17 +177,19 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Depot App Order Shipped", mail.subject
   end
 
-  # test "email notification is sent when error occurs" do
-  #
-  #   # Visit invalid cart path.
-  #   cart_id = 9999
-  #   get "/carts/#{cart_id}"
-  #   assert_redirected_to store_url
-  #
-  #   # Check that error mail was delivered to admin.
-  #   mail = ActionMailer::Base.deliveries.last
-  #   assert_equal [Rails.application.secrets.admin_email], mail.to
-  #   assert_equal 'Depot App <depot@example.com>', mail[:from].value
-  #   assert_equal "Depot App Exception: Invalid Cart", mail.subject
-  # end
+  # User tries to access invalid cart. User is redirected to store index and an
+  # email is sent to admin with the details of the exception.
+  test "email notification is sent when error occurs" do
+
+    # Visit invalid cart path.
+    cart_id = 9999
+    get "/carts/#{cart_id}"
+    assert_redirected_to store_url
+
+    # Check that error mail was delivered to admin.
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal [Rails.application.secrets.admin_email], mail.to
+    assert_equal 'Depot App <depot@example.com>', mail[:from].value
+    assert_equal "Depot App Exception: Invalid Cart", mail.subject
+  end
 end
