@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  resources :users
 
-  resources :orders
-
-  resources :line_items do
-    #member do
-    #  put 'decrement'
-    #end
-    put 'decrement', on: :member
+  get 'admin' => 'admin#index'
+  controller :sessions do
+    get 'login' => :new  # Replaces 'session/create' for simply 'login'
+    post 'login' => :create
+    delete 'logout' => :destroy
   end
 
+  resources :users
+  resources :orders
+  resources :line_items do
+    put 'decrement', on: :member
+  end
   resources :carts
-
   get 'store/index'
-
   resources :products do
     get :who_bought, on: :member
   end
