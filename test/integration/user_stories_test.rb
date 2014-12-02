@@ -149,7 +149,6 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     orders = Order.all
     assert_equal 1, orders.size
     order = orders[0]
-    # puts "ship_date: #{Order.first.ship_date}"
     
     # Check that first order is the expected one.
     assert_equal "Dave Thomas",     order.name
@@ -157,7 +156,6 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "dave@example.com",order.email
     assert_equal "Check",           order.pay_type
     assert_equal 1,                 order.payment_type_id
-    # assert_equal ship_date,         order.ship_date
 
     # Check that line_items contains the expected product.
     assert_equal 1, order.line_items.size
@@ -171,7 +169,17 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Depot App Order Shipped", mail.subject
   end
 
-  test "" do
-
-  end
+  # test "email notification is sent when error occurs" do
+  #
+  #   # Visit invalid cart path.
+  #   cart_id = 9999
+  #   get "/carts/#{cart_id}"
+  #   assert_redirected_to store_url
+  #
+  #   # Check that error mail was delivered to admin.
+  #   mail = ActionMailer::Base.deliveries.last
+  #   assert_equal [Rails.application.secrets.admin_email], mail.to
+  #   assert_equal 'Depot App <depot@example.com>', mail[:from].value
+  #   assert_equal "Depot App Exception: Invalid Cart", mail.subject
+  # end
 end

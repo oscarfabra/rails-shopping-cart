@@ -62,13 +62,12 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.update!(order_params)
         # Sends a notification to the user if order is shipped.
-        @order.ship(params[:order][:ship_date])
+        # @order.ship(params[:order][:ship_date])
         # puts "ship_date updated to: #{params[:order][:ship_date]}"
         if @order.ship_date
           # puts "Sending shipped email message..."
           OrderNotifier.shipped(@order).deliver
         end
-
 
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
@@ -97,6 +96,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type, :payment_type_id)
+      params.require(:order).permit(:name, :address, :email, :pay_type,
+                                    :payment_type_id, :ship_date)
     end
 end
