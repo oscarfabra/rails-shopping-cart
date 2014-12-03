@@ -4,14 +4,23 @@ class SessionsController < ApplicationController
   def new
   end
 
-  # Logs-in the admin user.
+  # Logs-in an admin user.
   def create
-    user = User.find_by(name: params[:name])
-    if user && user.authenticate(params[:password])
+    if User.count.zero?
+      # If there's no user in the database, save given details and let it in.
+      user = User.create(name: params[:name], password: params[:password],
+                  password_confirmation: params[:password_confirmation])
       session[:user_id] = user.id
-      redirect_to admin_url
+      redirect_to admin_url, notice: "Welcome #{user.name}"
     else
-      redirect_to login_url, alert: "Invalid user/password combination"
+      # If there's any user, details provided must be correct.
+      user = User.find_by(name: params[:name])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to admin_url, notice: "Welcome #{user.name}"
+      else
+        redirect_to login_url, alert: "Invalid user/password combination"
+      end
     end
   end
 
