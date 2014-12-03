@@ -181,15 +181,15 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   # email is sent to admin with the details of the exception.
   test "email notification is sent when error occurs" do
 
-    # # Visit invalid cart path.
-    # cart_id = 9999
-    # get "/carts/#{cart_id}"
-    # assert_redirected_to login_url
-    #
-    # # Check that error mail was delivered to admin.
-    # mail = ActionMailer::Base.deliveries.last
-    # assert_equal [Rails.application.secrets.admin_email], mail.to
-    # assert_equal 'Depot App <depot@example.com>', mail[:from].value
-    # assert_equal "Depot App Exception: Invalid Cart", mail.subject
+    # Visit invalid cart path.
+    cart_id = 9999
+    get "/carts/#{cart_id}"
+    assert_redirected_to '/'
+
+    # Check that error mail was delivered to admin.
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal [Rails.application.secrets.admin_email], mail.to
+    assert_equal 'Depot App <depot@example.com>', mail[:from].value
+    assert_equal "Depot App Exception: Invalid Cart", mail.subject
   end
 end
