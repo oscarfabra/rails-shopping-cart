@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:new, :create, :update]
 
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
@@ -64,13 +64,12 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.update!(order_params)
         # Sends a notification to the user if order is shipped.
-        # @order.ship(params[:order][:ship_date])
+        @order.ship(params[:order][:ship_date])
         # puts "ship_date updated to: #{params[:order][:ship_date]}"
         if @order.ship_date
           # puts "Sending shipped email message..."
           OrderNotifier.shipped(@order).deliver
         end
-
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
