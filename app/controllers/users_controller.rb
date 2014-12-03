@@ -42,13 +42,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    # Checks that current password is valid.
+    current_password = params[:user].delete('current_password')
+    unless @user.authenticate(current_password)
+      @user.errors.add(:current_password, 'is not valid')
+    end
     respond_to do |format|
-      if @user.update(user_params)
+      # Updates the user if pertinent.
+      if @user.errors.empty? && @user.update(user_params)
         format.html {
           redirect_to users_url,
                       notice: "User #{@user.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
+        # Displays errors if user couldn't be updated.
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -77,7 +84,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
     end

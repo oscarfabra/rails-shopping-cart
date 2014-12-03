@@ -97,7 +97,7 @@
   }
   form {
     label {
-      width: 5em;
+      width: 10em;
       float: left;
       text-align: right;
       padding-top: 0.2em;
@@ -106,6 +106,9 @@
     }
     select, textarea, input {
       margin-left: 0.5em;
+    }
+    .actions {
+      margin-left: 10em;
     }
     .submit {
       margin-left: 4em;

@@ -1,5 +1,12 @@
 <div class="depot_form">
   <%= form_for(@user) do |f| %>
+
+    <!-- Shows alert message, if any. -->
+    <% if flash[:alert] %>
+      <p id="notice"><%= flash[:alert] %></p>
+    <% end %>
+
+    <!-- Shows error message, if any. -->
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -18,12 +25,18 @@
         <%= f.label :name, 'Name:' %>
         <%= f.text_field :name, size: 40 %>
       </div>
+      <% if params[:action] == 'edit' || params[:action] == 'update' %>
+        <div class="field">
+          <%= f.label :current_password, 'Current password:' %>
+          <%= f.password_field :current_password, size: 40 %>
+        </div>
+      <% end %>
       <div class="field">
-        <%= f.label :password, 'Password:' %>
+        <%= f.label :password, 'New password:' %>
         <%= f.password_field :password, size: 40 %>
       </div>
       <div class="field">
-        <%= f.label :password_confirmation, 'Confirm:' %>
+        <%= f.label :password_confirmation, 'Confirm password:' %>
         <%= f.password_field :password_confirmation, size: 40 %>
       </div>
       <div class="actions">
