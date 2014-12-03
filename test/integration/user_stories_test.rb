@@ -100,11 +100,6 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal 1, cart.line_items.size
     assert_equal ruby_book, cart.line_items[0].product
 
-    # Visit the checkout page.
-    # get "/orders/new"
-    # assert_response :success
-    # assert_template "new"
-
     # Post an order with the given details. Guarantee redirected to index and
     # cart is emptied.
     post_via_redirect "/orders", order: {
@@ -188,12 +183,34 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Depot App Exception: Invalid Cart", mail.subject
   end
 
-  test "should redirect if trying to access sensitive pages" do
+  test "should redirect if trying to access sensitive data" do
 
-    # # Visit order edit page show redirect to login.
-    # get "/orders/#{order.id}/edit"
-    # assert_response :success
-    # assert_template "edit"
+    # Visit the checkout page and redirect to index.
+    get "/orders/new"
+    assert_redirected_to '/'
 
+    # Visit order edit page and guarantee redirected to login.
+    order_id = 9999
+    get "/orders/#{order_id}/edit"
+    assert_redirected_to '/login'
+
+    # login user.
+    user = users(:one)
+    get "/login"
+    assert_response :success
+    post_via_redirect "/login", name: user.name, password: 'secret'
+    assert_response :success
+    assert_equal '/admin', path
+
+    # Visit a protected resource
+    cart = carts(:cart_1)
+    get "/carts/#{cart.id}"
+    assert_response :success
+    assert_equal "/carts/#{cart.id}", path
+
+    # Log out user.
+    delete "/logout"
+    assert_response :redirect
+    assert_template '/'
   end
 end

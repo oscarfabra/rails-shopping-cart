@@ -44,7 +44,7 @@ class UsersControllerTest < ActionController::TestCase
               password: 'secret',
               password_confirmation: 'secret' }
 
-    assert_redirected_to users_path
+    assert_response :success
   end
 
   test "should destroy user" do
