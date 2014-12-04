@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   # Causes the authorize method to be called before every action in application.
   before_action :authorize
+  before_action :set_i18n_locale_from_params
 
   protected
     def authorize
@@ -18,5 +19,22 @@ class ApplicationController < ActionController::Base
           user && user.authenticate(password)
         end
       end
+    end
+
+    # Sets the locale from the params if it is set.
+    def set_i18n_locale_from_params
+      if params[:locale]
+        if I18n.available_locales.map(&:to_s).include?(params[:locale])
+          I18n.locale = params[:locale]
+        else
+          flash.now[:notice] = "#{params[:locale]} translation not available"
+          logger.error flash.now[:notice]
+        end
+      end
+    end
+
+    # Default url options.
+    def default_url_options
+      { locale: I18n.locale }
     end
 end

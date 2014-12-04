@@ -8,21 +8,21 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :orders
-  resources :line_items do
-    put 'decrement', on: :member
-  end
-  resources :carts
-  get 'store/index'
   resources :products do
     get :who_bought, on: :member
   end
 
+  scope '(:locale)' do
+    resources :orders
+    resources :line_items do
+      put 'decrement', on: :member
+    end
+    resources :carts
+    root 'store#index', as: 'store'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'store#index', as: 'store'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
