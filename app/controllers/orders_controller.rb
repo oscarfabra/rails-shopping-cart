@@ -41,12 +41,12 @@ class OrdersController < ApplicationController
     @order.set_payment_type_id!
 
     respond_to do |format|
-      if @order.save!
+      if @order.errors.empty? && @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderNotifier.received(@order).deliver
 
-        format.html { redirect_to store_url, notice: 'Thank you for your order.' }
+        format.html { redirect_to store_url, notice: I18n.t('.thank_you_order') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

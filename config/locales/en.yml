@@ -21,6 +21,15 @@
 
 en:
 
+  number:
+    currency:
+      format:  # Currency format
+        unit:         "$"
+        precision:    2
+        separator:    "."
+        delimiter:    ","
+        format:       "%u%n"
+
   layouts:  # views/layouts
     application:  # application.html.erb
       title_html:   "Rails Depot App"
@@ -40,11 +49,15 @@ en:
       empty:      "Empty Cart"
       checkout:   "Checkout"
 
-  number:
-    currency:
-      format:
-        unit:         "$"
-        precision:    2
-        separator:    "."
-        delimiter:    ","
-        format:       "%u%n"
+  orders:
+    new:  # new.html.erb
+      legend:           "Please Enter Your Details"
+    form:  # _form.html.erb
+      name:             "Name"
+      address_html:     "Address"
+      email:            "E-mail"
+      pay_type:         "Pay with"
+      pay_prompt_html:  "Select a payment method"
+      submit:           "Place Order"
+
+  thank_you_order:      "Thank you for your order"
