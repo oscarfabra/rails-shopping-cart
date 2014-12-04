@@ -14,6 +14,7 @@
  *= require_self
  */
 
+/* Customizes banner. */
 #banner {
   background: #9c9;
   padding: 10px;
@@ -28,6 +29,7 @@
   #logo_image { }
 }
 
+/* Customizes notices. */
 #notice {
   color: #000 !important;
   border: 2px solid red;
@@ -37,6 +39,7 @@
   font: bold smaller sans-serif;
 }
 
+/* Customizes main columns. */
 #columns {
   background: #141;
   #main {
@@ -85,6 +88,7 @@
   }
 }
 
+/* Customizes depot forms. */
 .depot_form {
   fieldset {
     background: #efe;
@@ -117,4 +121,10 @@
       display: none
     }
   }
+}
+
+/* Customizes locales select btn. */
+.locale {
+  float: right;
+  margin: -0.25em 0.1em;
 }
