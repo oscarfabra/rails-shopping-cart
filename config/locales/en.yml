@@ -20,4 +20,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+
+  layouts:  # views/layouts
+    application:  # application.html.erb
+      title_html:   "Rails Depot App"
+      home:         "Home"
+      questions:    "Questions"
+      news:         "News"
+      contact:      "Contact"
+
+  store:  # views/store
+    index:  # index.html.erb
+      title_html:       "Catalog"
+      add_to_cart_html: "Add to Cart"
+
+  carts:  # views/carts
+    cart:  # Name of helper _cart.html.erb
+      title:      "Your Cart"
+      empty:      "Empty Cart"
+      checkout:   "Checkout"
+
+  number:
+    currency:
+      format:
+        unit:         "$"
+        precision:    2
+        separator:    "."
+        delimiter:    ","
+        format:       "%u%n"

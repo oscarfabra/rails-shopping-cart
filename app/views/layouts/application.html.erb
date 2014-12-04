@@ -9,7 +9,7 @@
 <body class="<%= controller.controller_name %>">
   <div id="banner">
     <%= link_to image_tag("logo.png", id:"logo_image"), store_path %>
-    <%= @page_title || "Sample E-Commerce Store" %>
+    <%= @page_title || t('.title_html') %>
   </div>
   <div id="columns">
     <div id="side">
@@ -21,10 +21,10 @@
         <% end %>
       </div>
       <ul>
-        <li><a href="<%= store_path %>">Home</a></li>
-        <li><a href="#">Questions</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="<%= store_path %>"><%= t('.home') %></a></li>
+        <li><a href="#"><%= t('.questions') %></a></li>
+        <li><a href="#"><%= t('.news') %></a></li>
+        <li><a href="#"><%= t('.contact') %></a></li>
       </ul>
       <!-- Displays administrative options if admin logged in. -->
       <% if session[:user_id] %>
