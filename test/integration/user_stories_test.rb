@@ -174,7 +174,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     # Visit invalid cart path.
     cart_id = 9999
     get "/carts/#{cart_id}"
-    assert_redirected_to '/'
+    assert_redirected_to "/#{I18n.locale}"
 
     # Check that error mail was delivered to admin.
     mail = ActionMailer::Base.deliveries.last
@@ -187,12 +187,12 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
     # Visit the checkout page and redirect to index.
     get "/orders/new"
-    assert_redirected_to '/'
+    assert_redirected_to "/#{I18n.locale}"
 
     # Visit order edit page and guarantee redirected to login.
-    order_id = 9999
-    get "/orders/#{order_id}/edit"
-    assert_redirected_to '/login'
+    order = orders(:one)
+    get "/orders/#{order.id}/edit"
+    assert_redirected_to "/login?locale=#{I18n.locale}"
 
     # login user.
     user = users(:one)
