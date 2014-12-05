@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'admin' => 'admin#index'
+  get 'admin' => 'admin#index'  # Admin index.
+
   controller :sessions do
     get 'login' => :new  # Replaces 'session/create' for simply 'login'
     post 'login' => :create

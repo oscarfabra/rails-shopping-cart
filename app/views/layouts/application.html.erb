@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sample E-Commerce Store</title>
+  <title>Rails Depot App</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
   <div id="banner">
-    <%= form_tag store_path, class: 'locale' do %>
-      <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s),
-                     onchage: 'this.form.submit()' %>
-      <%= submit_tag 'submit' %>
-      <%= javascript_tag "$('.locale input').hide()" %>
-    <% end %>
+    <p class="locale">
+      <%= link_to_unless I18n.locale == :en, "English", locale: :en %>
+      |
+      <%= link_to_unless I18n.locale == :es, "Espa&ntilde;ol".html_safe, locale: :es %>
+    </p>
     <%= link_to image_tag("logo.png", id:"logo_image"), store_path %>
     <%= @page_title || t('.title_html') %>
   </div>
