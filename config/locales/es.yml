@@ -3,11 +3,11 @@ es:
   number:
       currency:
         format:
-          unit:         "$US"
-          precision:    2
+          unit:         "COP"
+          precision:    0
           separator:    ","
           delimiter:    "."
-          format:       "%n&nbsp;%u"
+          format:       "$%n&nbsp;%u"
 
   layouts: # views/layouts
     application:  # application.html.erb

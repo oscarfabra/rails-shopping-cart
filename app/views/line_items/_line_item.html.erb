@@ -10,5 +10,5 @@
   </td>
   <td><%= line_item.quantity %>x</td>
   <td><%= line_item.product.title %></td>
-  <td class="item_price" ><%= number_to_currency(line_item.total_price) %></td>
+  <td class="item_price" ><%= number_to_currency(number_to_locale(line_item.total_price)) %></td>
 </tr>
