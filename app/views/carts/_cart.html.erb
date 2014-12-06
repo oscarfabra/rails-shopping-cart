@@ -7,7 +7,9 @@
     <td id="update_qty">&nbsp;</td>
     <td id="side_qty">&nbsp;</td>
     <td>Total</td>
-    <td class="total_cell"><%= number_to_currency(number_to_locale(cart.total_price)) %></td>
+    <td class="total_cell">
+      <%= number_to_currency(number_to_locale(cart.total_price)) unless cart.line_items.size == 0 %>
+    </td>
   </tr>
 </table>
 

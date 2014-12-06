@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create, :decrement]
 
   include CurrentCart
   before_action :set_cart, only: [:create, :destroy, :decrement]
@@ -89,7 +89,7 @@ class LineItemsController < ApplicationController
         format.json { head :ok }
       else
         format.html { redirect_to store_url, notice: 'Could not decrement item.' }
-        format.js {@current_item = @line_item }
+        format.js { @current_item = @line_item }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
