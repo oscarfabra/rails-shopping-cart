@@ -24,8 +24,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: rails_depot_app_prod
+  database: <%= ENV["DB_NAME"] %>
   pool: 5
-  username: root
-  password: password
-  host: localhost
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  host: <%= ENV["DB_HOST"] %>
