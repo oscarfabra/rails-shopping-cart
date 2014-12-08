@@ -4,7 +4,7 @@ class AddPayTypeToOrder < ActiveRecord::Migration
 
     # Walks through each order adding the corresponding payment_type value.
     Order.all.each do |order|
-      pay_type_id = 0
+      pay_type_id = 1  # Defaults to 'Check'
       case order.pay_type
       when 'Check'
         pay_type_id = 1
