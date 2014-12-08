@@ -9,7 +9,8 @@ class StoreController < ApplicationController
       # Redirects to the corresponding locale.
       redirect_to store_url(locale: params[:set_locale])
     else
-      @products = Product.order(:name)
+      # Retrieves products with status = 1, ordered by name.
+      @products = Product.order(:name).where(status: 1)
       if session[:counter].nil?
         session[:counter] = 1
       else

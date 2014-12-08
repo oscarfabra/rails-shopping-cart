@@ -1,4 +1,4 @@
-<h1>Listing products</h1>
+<h1>Listing products (From Current Locale)</h1>
 
 <table>
 <% @products.each do |product| %>
@@ -10,6 +10,12 @@
       <dl>
         <dt><%= product.name %></dt>
         <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
+      </dl>
+    </td>
+    <td class="list_description">
+      <dl>
+        <dt>Status</dt>
+        <dd><%= (product.status == 1)?"Enabled" : "Disabled" %></dd>
       </dl>
     </td>
     <td class="list_actions">
