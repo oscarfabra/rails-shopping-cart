@@ -2,13 +2,14 @@ class OrdersController < ApplicationController
 
   include CurrentCart
   include CurrentOrder
-  before_action :set_cart, only: [:new, :create]
+  before_action :set_cart # Guarantees that cart is going to be shown.
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    # Retrieves orders from current customer ordered by created_at date.
+    @orders = Order.where(customer_id: session[:customer_id]).order(:created_at)
   end
 
   # GET /orders/1

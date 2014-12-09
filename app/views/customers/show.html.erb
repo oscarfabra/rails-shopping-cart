@@ -1,10 +1,18 @@
 <% if notice %>
   <p id="notice"><%= notice %></p>
 <% end %>
+<h1>My Details</h1>
 <p>
   <strong>Email:</strong>
   <%= @customer.email %>
 </p>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<p>
+  <strong>First Name:</strong>
+  <%= @customer.firstname %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @customer.lastname %>
+</p>
+<br>
+<%= link_to 'Edit my details', edit_customer_path(@customer) %>

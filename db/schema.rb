@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209211102) do
+ActiveRecord::Schema.define(version: 20141209222128) do
+
+  create_table "admins", force: true do |t|
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admins", ["customer_id"], name: "index_admins_on_customer_id"
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"

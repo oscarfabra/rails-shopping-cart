@@ -28,15 +28,26 @@
       <ul>
         <li><a href="<%= store_path %>"><%= t('.home') %></a></li>
       </ul>
-      <!-- Displays administrative options if admin logged in. -->
-      <% if session[:customer_id] %>
+      <!-- Displays options if any kind of user logged in. -->
+      <% if user_logged_in %>
         <ul>
-          <li><%= link_to 'Orders', orders_path %></li>
+          <li><%= link_to 'My Orders', orders_path %></li>
+          <li><%= link_to 'My Details', customer_path(session[:customer_id]) %></li>
+        </ul>
+        <br>
+        <%= button_to 'Logout', logout_path, method: :delete %>
+      <% end %>
+      <!-- Displays administrative options if admin logged in. -->
+      <% if admin_logged_in %>
+        <ul>
           <li><%= link_to 'Products', products_path %></li>
           <li><%= link_to 'Customers', customers_path %></li>
         </ul>
+        <br>
         <%= button_to 'Logout', logout_path, method: :delete %>
-      <% else %>
+      <% end %>
+      <!-- Displays log in and sign up options if no user logged in. -->
+      <% if !user_logged_in and !admin_logged_in %>
         <ul>
           <li><%= link_to t('.log_in'), login_path %></li>
           <li><%= link_to t('.sign_up'), new_customer_path %></li>

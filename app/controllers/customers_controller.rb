@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+
+  include CurrentUser
   skip_before_action :authorize, only: [:new, :create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +8,12 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.order(:email)   # Returns customers ordered by name
+
+    if !admin_logged_in
+      redirect_to admin_url
+    else
+      redirect_to customers_url
+    end
   end
 
   # GET /customers/1
@@ -30,8 +38,8 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         format.html {
-          redirect_to customers_url,
-                      notice: "Customer #{@customer.firstname} was successfully created." }
+          redirect_to customer_path(@customer.id),
+                      notice: "Your account was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
