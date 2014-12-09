@@ -1,7 +1,7 @@
 class AddPriceToLineItems < ActiveRecord::Migration
 
   def up
-    add_column :line_items, :price, :decimal, :precision => 8, :scale => 2
+    add_column :line_items, :price, :decimal, precision: 8, scale: 2
 
     # Walks through each line_item adding the product's price
     LineItem.all.each do |line_item|

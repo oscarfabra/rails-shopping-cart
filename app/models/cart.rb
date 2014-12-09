@@ -11,6 +11,7 @@ class Cart < ActiveRecord::Base
       current_item.unit_price = current_item.product.price
       line_items << current_item
     end
+    current_item.total_price = current_item.quantity * current_item.unit_price
     current_item.save!
     current_item
   end
