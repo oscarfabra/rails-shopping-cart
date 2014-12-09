@@ -14,9 +14,15 @@
     </div>
   <% end %>
 
-  <div class="order_details">
-    <strong>Order No.</strong> <%= @order.order_no %>
+  <div class="field">
+    <div class="order_label"><strong>Order No.</strong></div>
+    <div class="order_detail"><%= @order.order_no %></div>
     <%= f.hidden_field :order_no, { value: @order.order_no } %>
+  </div>
+  <div class="field">
+    <div class="order_label"><strong>Customer ID</strong></div>
+    <div class="order_detail"><%= @order.customer_id %></div>
+    <%= f.hidden_field :customer_id, { value: @order.customer_id } %>
   </div>
   <div class="field">
     <%= f.label :name, t('.name') %><br>

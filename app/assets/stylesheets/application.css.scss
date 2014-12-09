@@ -130,7 +130,15 @@
   margin: -0.25em 0.1em;
 }
 
-.order_details {
-  margin-left: 5em;
-  padding: 5px 7px;
+/* Customizes order form. */
+.order_label {
+  width: 10em;
+  float: left;
+  text-align: right;
+  padding-top: 0.2em;
+  margin-right: 0.1em;
+  display: block;
+}
+.order_detail {
+  margin-left: 0.5em;
 }

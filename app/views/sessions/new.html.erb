@@ -19,6 +19,9 @@
       <div class="actions">
         <%= submit_tag "Log In" %>
       </div>
+      <div class="actions">
+        New user? <%= link_to t('.sign_up'), new_customer_path %>
+      </div>
     </fieldset>
   <% end %>
 </div>

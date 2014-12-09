@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers

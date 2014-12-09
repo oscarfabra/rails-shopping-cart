@@ -3,7 +3,7 @@ module CurrentOrder
 
   private
 
-    def set_order_no
+    def get_order_no
       # Can add more complexity as required.
       # TODO: Avoid concurrency issues, if users create orders at same time.
       last_order = Order.last
@@ -13,4 +13,8 @@ module CurrentOrder
         "O#{1}"
       end
     end
+
+  def get_customer_id
+    session[:customer_id]
+  end
 end

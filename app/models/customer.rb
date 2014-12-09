@@ -1,4 +1,6 @@
 class Customer < ActiveRecord::Base
+  has_many :orders, dependent: :destroy
+
   has_secure_password
 
   validates :email, presence: true, uniqueness: true

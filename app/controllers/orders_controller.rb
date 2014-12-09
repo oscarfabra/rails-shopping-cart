@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create, :update]
+  #skip_before_action :authorize, only: [:new, :create, :update]
 
   include CurrentCart
   include CurrentOrder  # To define order_no for new order
@@ -25,9 +25,13 @@ class OrdersController < ApplicationController
       redirect_to store_url, notice: "Your cart is empty."
       return
     end
-    # Binds the order for the order#index page.
+
+    # Binds the order for the order#index page and gets some attributes.
     @order = Order.new
-    @order.order_no = set_order_no
+    @order.order_no = get_order_no
+    @order.customer_id = get_customer_id
+
+    # Disables the checkout btn.
     @chk_disabled = true
   end
 
@@ -99,7 +103,13 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:order_no, :name, :address, :email, :pay_type,
-                                    :payment_type_id, :ship_date)
+      params.require(:order).permit(:customer_id,
+                                    :order_no,
+                                    :name,
+                                    :address,
+                                    :email,
+                                    :pay_type,
+                                    :payment_type_id,
+                                    :ship_date)
     end
 end
