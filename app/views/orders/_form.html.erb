@@ -1,4 +1,5 @@
 <%= form_for(@order) do |f| %>
+
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%=raw t('errors.template.header', count: @order.errors.count,
@@ -13,6 +14,10 @@
     </div>
   <% end %>
 
+  <div class="order_details">
+    <strong>Order No.</strong> <%= @order.order_no %>
+    <%= f.hidden_field :order_no, { value: @order.order_no } %>
+  </div>
   <div class="field">
     <%= f.label :name, t('.name') %><br>
     <%= f.text_field :name, size: 40 %>

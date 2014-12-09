@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create, :update]
 
   include CurrentCart
+  include CurrentOrder  # To define order_no for new order
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -26,6 +27,7 @@ class OrdersController < ApplicationController
     end
     # Binds the order for the order#index page.
     @order = Order.new
+    @order.order_no = set_order_no
     @chk_disabled = true
   end
 
@@ -95,9 +97,9 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type,
+      params.require(:order).permit(:order_no, :name, :address, :email, :pay_type,
                                     :payment_type_id, :ship_date)
     end
 end
