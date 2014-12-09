@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Depot User
+  name: Depot Customer
   address: MyText
   email: user@example.org
   pay_type: Check

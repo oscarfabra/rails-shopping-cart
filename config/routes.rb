@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  resources :users
+
+  resources :customers
   resources :products do
     get :who_bought, on: :member
   end

@@ -11,9 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208211836) do
+ActiveRecord::Schema.define(version: 20141208220436) do
 
   create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,13 +67,6 @@ ActiveRecord::Schema.define(version: 20141208211836) do
     t.datetime "updated_at"
     t.string   "locale",                              default: "en"
     t.integer  "status",                              default: 1
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end

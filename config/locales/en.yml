@@ -32,11 +32,10 @@ en:
 
   layouts:  # views/layouts
     application:  # application.html.erb
-      title_html:   "Rails Depot App"
-      home:         "Home"
-      questions:    "Questions"
-      news:         "News"
-      contact:      "Contact"
+      title_html: "Sample E-commerce Site"
+      home:       "Home"
+      log_in:     "Log In"
+      sign_up:    "Sign Up"
 
   store:  # views/store
     index:  # index.html.erb

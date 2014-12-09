@@ -27,18 +27,20 @@
       </div>
       <ul>
         <li><a href="<%= store_path %>"><%= t('.home') %></a></li>
-        <li><a href="#"><%= t('.questions') %></a></li>
-        <li><a href="#"><%= t('.news') %></a></li>
-        <li><a href="#"><%= t('.contact') %></a></li>
       </ul>
       <!-- Displays administrative options if admin logged in. -->
-      <% if session[:user_id] %>
+      <% if session[:customer_id] %>
         <ul>
           <li><%= link_to 'Orders', orders_path %></li>
           <li><%= link_to 'Products', products_path %></li>
-          <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Customers', customers_path %></li>
         </ul>
         <%= button_to 'Logout', logout_path, method: :delete %>
+      <% else %>
+        <ul>
+          <li><%= link_to t('.log_in'), login_path %></li>
+          <li><%= link_to t('.sign_up'), new_customer_path %></li>
+        </ul>
       <% end %>
     </div>
     <div id="main">

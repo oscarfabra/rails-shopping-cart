@@ -11,11 +11,10 @@ es:
 
   layouts: # views/layouts
     application:  # application.html.erb
-      title_html:   "Aplicaci&oacute;n Depot en Rails"
-      home:         "Inicio"
-      questions:    "Preguntas"
-      news:         "Noticias"
-      contact:      "Contacto"
+      title_html: "Sitio E-commerce de Prueba"
+      home:       "Inicio"
+      log_in:     "Ingresar"
+      sign_up:    "Registrarse"
 
   store:  # views/store
       index: # index.html.erb

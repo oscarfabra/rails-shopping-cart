@@ -6,13 +6,13 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Login the appropriate user for all tests.
-  def login_as(user)
-    session[:user_id] = users(user).id
+  # Login the appropriate customer for all tests.
+  def login_as(customer)
+    session[:customer_id] = customers(customer).id
   end
 
   def logout
-    session.delete :user_id
+    session.delete :customer_id
   end
 
   def setup

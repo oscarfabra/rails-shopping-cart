@@ -9,16 +9,16 @@ class ApplicationController < ActionController::Base
   protected
     def authorize
       # Nothing to authorize.
-      return if User.count.zero?
+      return if Customer.count.zero?
       # Selects authorization method depending on request format.
       if request.format == Mime::HTML || request.format == MIME::JS
-        user = User.find_by(id: session[:user_id])
-        # If user wasn't found, redirect to login.
-        redirect_to login_url, notice: "Please log in" unless user
+        customer = Customer.find_by(id: session[:customer_id])
+        # If customer wasn't found, redirect to login.
+        redirect_to login_url, notice: "Please log in" unless customer
       else
         authenticate_or_request_with_http_basic do |username, password|
-          user = User.find_by(name: username)
-          user && user.authenticate(password)
+          customer = Customer.find_by(name: username)
+          customer && customer.authenticate(password)
         end
       end
     end

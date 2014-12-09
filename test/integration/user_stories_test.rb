@@ -167,7 +167,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Depot App Order Shipped", mail.subject
   end
 
-  # User tries to access invalid cart. User is redirected to store index and an
+  # Customer tries to access invalid cart. Customer is redirected to store index and an
   # email is sent to admin with the details of the exception.
   test "email notification is sent when error occurs" do
 
@@ -194,11 +194,11 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     get "/orders/#{order.id}/edit"
     assert_redirected_to "/login?locale=#{I18n.locale}"
 
-    # login user.
-    user = users(:one)
+    # login customer.
+    customer = customers(:one)
     get "/login"
     assert_response :success
-    post_via_redirect "/login", name: user.name, password: 'secret'
+    post_via_redirect "/login", name: customer.name, password: 'secret'
     assert_response :success
     assert_equal '/admin', path
 
@@ -208,7 +208,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal "/carts/#{cart.id}", path
 
-    # Log out user.
+    # Log out customer.
     delete "/logout"
     assert_response :redirect
     assert_template '/'
