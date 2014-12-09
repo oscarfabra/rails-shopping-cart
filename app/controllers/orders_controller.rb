@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  #skip_before_action :authorize, only: [:new, :create, :update]
+  skip_before_action :authorize, only: [:new, :create, :update]
 
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
@@ -95,7 +95,7 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
-    # Never trust parameters from internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type,
                                     :payment_type_id, :ship_date)

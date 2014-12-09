@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new
   end
 
-  # Logs-in a user.
+  # Logs-in an admin user.
   def create
     # Details provided must be correct.
     customer = Customer.find_by(email: params[:email])

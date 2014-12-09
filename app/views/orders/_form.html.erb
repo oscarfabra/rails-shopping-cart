@@ -14,25 +14,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :order_no, 'Order No:' %><br>
+    <%= f.label :name, t('.name') %><br>
     <%= f.text_field :name, size: 40 %>
   </div>
-
-  <div class="field">
-    <%= f.label :customer_id, 'Customer ID:' %><br>
-    <%= f.text_field :name, size: 40 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :total, 'Total:' %><br>
-    <%= f.text_field :total, size: 40 %>
-  </div>
-
   <div class="field">
     <%= f.label :address, t('.address_html') %><br>
     <%= f.text_area :address, rows: 3, cols: 40 %>
   </div>
-  <%= f.hidden_field :email, { value: @order.customer.email } %>
+  <div class="field">
+    <%= f.label :email, t('.email') %><br>
+    <%= f.email_field :email, size: 40 %>
+  </div>
   <div class="field">
     <%= f.label :pay_type, t('.pay_type') %><br>
     <%= f.select :pay_type,
