@@ -39,8 +39,8 @@
   </div>
   <div class="field">
     <div class="order_label">Total:</div>
-    <div class="order_detail"><%= @order.customer.email %></div>
-    <%= f.hidden_field :total, { value: @order.customer.email } %>
+    <div class="order_detail"><%= @order.total %></div>
+    <%= f.hidden_field :total, { value: @order.total } %>
   </div>
   <div class="field">
     <div class="order_title_label">Additional Details</div>

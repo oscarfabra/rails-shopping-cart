@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   include CurrentCart
-  include CurrentOrder  # To define order_no for new order
+  include CurrentOrder
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.order_no = get_order_no
     set_customer_details(@order)
-    #@order.total = @cart.total_price
+    @order.total = @cart.total_price
 
     # Disables the checkout btn.
     @chk_disabled = true
@@ -103,7 +103,8 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_id,
+      params.require(:order).permit(:total,
+                                    :customer_id,
                                     :order_no,
                                     :address,
                                     :email,

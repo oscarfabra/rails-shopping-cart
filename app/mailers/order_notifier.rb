@@ -5,13 +5,13 @@ class OrderNotifier < ActionMailer::Base
   def received(order)
     @order = order
 
-    mail to: order.email, subject: "Depot App Order Confirmation"
+    mail to: order.customer.email, subject: "Depot App Order Confirmation"
   end
 
   # Creates an email confirming that order has been shipped.
   def shipped(order)
     @order = order
 
-    mail to: order.email, subject: "Depot App Order Shipped"
+    mail to: order.customer.email, subject: "Depot App Order Shipped"
   end
 end

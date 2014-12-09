@@ -10,8 +10,7 @@ class Order < ActiveRecord::Base
   attr_accessor :ship_date
 
   # Validates that form values are appropriate.
-  validates :name, :address, :email, :payment_type_id, presence: true
-  validates_presence_of :pay_type
+  validates :total, :customer_id, :address, :email, :pay_type, presence: true
 
   # Adds a line_item from cart into an order instance.
   def add_line_items_from_cart!(cart)
