@@ -3,7 +3,7 @@
 
 # encoding: utf-8
 Product.delete_all
-Product.create!(title: 'CoffeeScript',
+Product.create!(name: 'CoffeeScript',
                 description:
                     %{<p>
         CoffeeScript is JavaScript done right. It provides all of JavaScript's
@@ -15,7 +15,7 @@ Product.create!(title: 'CoffeeScript',
                 image_url:   'cs.jpg',
                 price: 36.00)
 # . . .
-Product.create!(title: 'Programming Ruby 1.9 & 2.0',
+Product.create!(name: 'Programming Ruby 1.9 & 2.0',
                 description:
                     %{<p>
         Ruby is the fastest growing and most exciting dynamic language
@@ -25,7 +25,7 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
                 image_url: 'ruby.jpg',
                 price: 49.95)
 # . . .
-Product.create!(title: 'Rails Test Prescriptions',
+Product.create!(name: 'Rails Test Prescriptions',
                 description:
                     %{<p>
         <em>Rails Test Prescriptions</em> is a comprehensive guide to testing
