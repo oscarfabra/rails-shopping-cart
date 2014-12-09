@@ -6,21 +6,13 @@ class SessionsController < ApplicationController
 
   # Logs-in an admin user.
   def create
-    if Customer.count.zero?
-      # If there's no user in the database, save given details and let it in.
-      customer = Customer.create(name: params[:name], password: params[:password],
-                  password_confirmation: params[:password_confirmation])
+    # Details provided must be correct.
+    customer = Customer.find_by(email: params[:email])
+    if customer && customer.authenticate(params[:password])
       session[:customer_id] = customer.id
-      redirect_to admin_url, notice: "Welcome #{customer.name}"
+      redirect_to admin_url, notice: "Welcome #{customer.firstname}"
     else
-      # If there's any customer, details provided must be correct.
-      customer = Customer.find_by(name: params[:name])
-      if customer && customer.authenticate(params[:password])
-        session[:customer_id] = customer.id
-        redirect_to admin_url, notice: "Welcome #{customer.name}"
-      else
-        redirect_to login_url, alert: "Invalid user/password combination"
-      end
+      redirect_to login_url, alert: "Invalid email/password combination"
     end
   end
 

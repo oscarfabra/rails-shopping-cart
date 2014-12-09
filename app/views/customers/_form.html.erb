@@ -22,8 +22,16 @@
     <fieldset>
       <legend>Enter Customer Details</legend>
       <div class="field">
-        <%= f.label :name, 'Name:' %>
-        <%= f.text_field :name, size: 40 %>
+        <%= f.label :email, 'Email:' %>
+        <%= f.text_field :email, size: 40 %>
+      </div>
+      <div class="field">
+        <%= f.label :firstname, 'First Name:' %>
+        <%= f.text_field :firstname, size: 40 %>
+      </div>
+      <div class="field">
+        <%= f.label :lastname, 'Last Name:' %>
+        <%= f.text_field :lastname, size: 40 %>
       </div>
       <% if params[:action] == 'edit' || params[:action] == 'update' %>
         <div class="field">

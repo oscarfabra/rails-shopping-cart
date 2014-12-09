@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Order No. <%= @order.id %> Details</h1>
 
 <p>
   <strong>Name:</strong>

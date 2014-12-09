@@ -1,8 +1,10 @@
 class Customer < ActiveRecord::Base
   has_secure_password
 
-  validates :name, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :password, length: { minimum: 7 }, presence: true
 
   after_destroy :ensure_an_admin_remains
 

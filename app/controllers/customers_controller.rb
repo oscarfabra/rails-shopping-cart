@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.order(:name)   # Returns customers ordered by name
+    @customers = Customer.order(:email)   # Returns customers ordered by name
   end
 
   # GET /customers/1
@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
       if @customer.save
         format.html {
           redirect_to customers_url,
-                      notice: "Customer #{@customer.name} was successfully created." }
+                      notice: "Customer #{@customer.firstname} was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class CustomersController < ApplicationController
       if @customer.errors.empty? && @customer.update(customer_params)
         format.html {
           redirect_to customers_url,
-                      notice: "Customer #{@customer.name} was successfully updated." }
+                      notice: "Customer #{@customer.firstname} was successfully updated." }
         format.json { render :show, status: :ok, location: @customer }
       else
         # Displays errors if customer couldn't be updated.
@@ -67,7 +67,7 @@ class CustomersController < ApplicationController
   def destroy
     begin
       @customer.destroy
-      flash[:notice] = "Customer #{@customer.name} deleted"
+      flash[:notice] = "Customer #{@customer.firstname} deleted"
     rescue StandardError => e
       # Catches exception to show it to customer in a flash.
       flash[:notice] = e.message
@@ -86,6 +86,7 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :password, :password_confirmation)
+      params.require(:customer).permit(:email, :firstname, :lastname, :password,
+                                       :password_confirmation)
     end
 end
