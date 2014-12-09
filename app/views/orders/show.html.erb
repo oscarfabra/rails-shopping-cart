@@ -2,27 +2,38 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Order No. <%= @order.id %> Details</h1>
+<h1>Order No. <%= @order.order_no %> Details</h1>
 
 <p>
-  <strong>Name:</strong>
-  <%= @order.name %>
+  <strong>Customer ID:</strong>
+  <%= @order.customer_id %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Customer Address:</strong>
   <%= @order.address %>
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @order.email %>
+  <strong>Customer Email:</strong>
+  <%= @order.customer.email %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @order.total %>
 </p>
 
 <p>
   <strong>Pay type:</strong>
   <%= @order.pay_type %>
 </p>
+
+<p>
+  <strong>Date Placed:</strong>
+  <%= @order.created_at %>
+</p>
+
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
