@@ -13,28 +13,41 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <div class="order_label"><strong>Order No.</strong></div>
+    <div class="order_title_label">Order Details</div>
+  </div>
+  <div class="field">
+    <div class="order_label">Order No:</div>
     <div class="order_detail"><%= @order.order_no %></div>
     <%= f.hidden_field :order_no, { value: @order.order_no } %>
   </div>
   <div class="field">
-    <div class="order_label"><strong>Customer ID</strong></div>
+    <div class="order_label">Customer ID:</div>
     <div class="order_detail"><%= @order.customer_id %></div>
     <%= f.hidden_field :customer_id, { value: @order.customer_id } %>
   </div>
   <div class="field">
-    <%= f.label :name, t('.name') %><br>
-    <%= f.text_field :name, size: 40 %>
+    <div class="order_label">Full Name:</div>
+    <div class="order_detail">
+      <%= "#{@order.customer.firstname} #{@order.customer.lastname}" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="order_label">E-mail:</div>
+    <div class="order_detail"><%= @order.customer.email %></div>
+    <%= f.hidden_field :email, { value: @order.customer.email } %>
+  </div>
+  <div class="field">
+    <div class="order_label">Total:</div>
+    <div class="order_detail"><%= @order.customer.email %></div>
+    <%= f.hidden_field :total, { value: @order.customer.email } %>
+  </div>
+  <div class="field">
+    <div class="order_title_label">Additional Details</div>
   </div>
   <div class="field">
     <%= f.label :address, t('.address_html') %><br>
     <%= f.text_area :address, rows: 3, cols: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :email, t('.email') %><br>
-    <%= f.email_field :email, size: 40 %>
   </div>
   <div class="field">
     <%= f.label :pay_type, t('.pay_type') %><br>

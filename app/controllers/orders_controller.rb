@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  #skip_before_action :authorize, only: [:new, :create, :update]
 
   include CurrentCart
   include CurrentOrder  # To define order_no for new order
@@ -29,7 +28,8 @@ class OrdersController < ApplicationController
     # Binds the order for the order#index page and gets some attributes.
     @order = Order.new
     @order.order_no = get_order_no
-    @order.customer_id = get_customer_id
+    set_customer_details(@order)
+    #@order.total = @cart.total_price
 
     # Disables the checkout btn.
     @chk_disabled = true
@@ -105,7 +105,6 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:customer_id,
                                     :order_no,
-                                    :name,
                                     :address,
                                     :email,
                                     :pay_type,
