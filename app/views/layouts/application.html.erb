@@ -27,21 +27,20 @@
       </div>
       <ul>
         <li><a href="<%= store_path %>"><%= t('.home') %></a></li>
+        <br>
       </ul>
+      <!-- Displays administrative options if admin logged in. -->
+      <% if admin_logged_in %>
+        <ul>
+          <li><%= link_to 'All Products', products_path %></li>
+          <li><%= link_to 'All Customers', customers_path %></li>
+        </ul>
+      <% end %>
       <!-- Displays options if any kind of user logged in. -->
       <% if user_logged_in %>
         <ul>
           <li><%= link_to 'My Orders', orders_path %></li>
           <li><%= link_to 'My Details', customer_path(session[:customer_id]) %></li>
-        </ul>
-        <br>
-        <%= button_to 'Logout', logout_path, method: :delete %>
-      <% end %>
-      <!-- Displays administrative options if admin logged in. -->
-      <% if admin_logged_in %>
-        <ul>
-          <li><%= link_to 'Products', products_path %></li>
-          <li><%= link_to 'Customers', customers_path %></li>
         </ul>
         <br>
         <%= button_to 'Logout', logout_path, method: :delete %>
@@ -53,6 +52,7 @@
           <li><%= link_to t('.sign_up'), new_customer_path %></li>
         </ul>
       <% end %>
+      <p>&nbsp;</p>
     </div>
     <div id="main">
       <%= yield %>

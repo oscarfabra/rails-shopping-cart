@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    # Selects only those products that match the current locale.
-    @products = Product.where(locale: I18n.locale)
+    # Selects all products, regardless of locale.
+    @products = Product.all
   end
 
   # GET /products/1

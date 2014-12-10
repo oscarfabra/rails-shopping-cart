@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
 
+  include CurrentCart
   include CurrentUser
+  before_action :set_cart # Guarantees that cart is going to be shown.
   skip_before_action :authorize, only: [:new, :create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
@@ -11,8 +13,6 @@ class CustomersController < ApplicationController
 
     if !admin_logged_in
       redirect_to admin_url
-    else
-      redirect_to customers_url
     end
   end
 
@@ -38,7 +38,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         format.html {
-          redirect_to customer_path(@customer.id),
+          redirect_to admin_path,
                       notice: "Your account was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
@@ -75,6 +75,11 @@ class CustomersController < ApplicationController
   # DELETE /customers/1.json
   def destroy
     begin
+      # Guarantees that user can't remove itself.
+      if session[:customer_id] == @customer.id
+        redirect_to customers_path, notice: "You can't remove yourself."
+        return
+      end
       @customer.destroy
       flash[:notice] = "Customer #{@customer.firstname} deleted"
     rescue StandardError => e

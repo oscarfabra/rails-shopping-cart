@@ -1,35 +1,38 @@
-<h1>My Current Orders</h1>
+<% if @orders.count > 0 %>
+  <h1>My Current Orders</h1>
 
-<table class="orders_table">
-  <thead>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <th>Customer ID</th>
-      <th>Total</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Pay type</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+  <table class="orders_table">
+    <thead>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td><%= order.customer_id %></td>
-        <td><%= order.total %></td>
-        <td><%= order.address %></td>
-        <td><%= order.email %></td>
-        <td><%= order.pay_type %></td>
-        <td><%= display_status(order) %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Customer ID</th>
+        <th>Total</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Pay type</th>
+        <th>Status</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+          <td><%= order.customer_id %></td>
+          <td><%= order.total %></td>
+          <td><%= order.address %></td>
+          <td><%= order.email %></td>
+          <td><%= order.pay_type %></td>
+          <td><%= display_status(order) %></td>
+          <td><%= link_to 'Show', order %></td>
+          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+          <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h1>You don't have any orders</h1>
+<% end %>
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order (Checkout)', new_order_path %>

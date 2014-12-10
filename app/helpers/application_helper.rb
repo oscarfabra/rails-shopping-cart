@@ -29,4 +29,10 @@ module ApplicationHelper
     admin = Admin.find_by(customer_id: session[:customer_id])
     admin
   end
+
+  # Tells whether given customer is admin.
+  def is_admin?(customer_id)
+    admin = Admin.find_by(customer_id: customer_id)
+    admin
+  end
 end
