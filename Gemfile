@@ -17,6 +17,14 @@ gem 'coffee-rails', '~> 4.0.0'
 # For currency conversion
 gem 'goog_currency'
 
+# Rest_Client for HTTP requests between web apps.
+gem 'rest_client', '~> 1.7.2'
+
+# Rest_Client dependencies
+gem 'mime-types', '~> 2.4.3'
+gem 'netrc', '~> 0.7.7'
+gem 'rdoc', '~> 4.2.0'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

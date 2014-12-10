@@ -52,9 +52,7 @@
   <div class="field">
     <%= f.label :pay_type, t('.pay_type') %><br>
     <%= f.select :pay_type,
-                 options_for_select([[t('.check_option'), Order::PAYMENT_TYPES[0]],
-                                     [t('.credit_card_option_html'), Order::PAYMENT_TYPES[1]],
-                                     [t('.purchase_order_option'), Order::PAYMENT_TYPES[2]]]),
+                 options_for_select([[t('.credit_card_option_html'), Order::PAYMENT_TYPES[1]]]),
                      prompt: t('.pay_prompt_html') %>
   </div>
   <div class="actions">

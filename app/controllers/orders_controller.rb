@@ -1,3 +1,6 @@
+require 'rest_client' # Using RestClient library.
+
+
 class OrdersController < ApplicationController
 
   include CurrentCart
@@ -49,11 +52,28 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.errors.empty? && @order.save
+        # Deletes cart.
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+
+        # Sends 'order received' e-mail notification to client.
         OrderNotifier.received(@order).deliver
 
-        format.html { redirect_to store_url, notice: I18n.t('.thank_you_order') }
+        # Sends orders details in json format to dummy payment gateway via post.
+        RestClient.post "http://localhost:3001/read_order", order_params.to_json,
+                        :content_type => :json, :accept => :json
+
+        response = RestClient.get "http://localhost:3001/payments"
+
+        pay_notice = ''
+        case response
+          when 200
+            pay_notice = 'Payment was received successfully.'
+          else
+            pay_notice = 'Unfortunately, payment was not received.'
+        end
+
+        format.html { redirect_to store_url, notice: "Thank you for your order! #{pay_notice}" }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
