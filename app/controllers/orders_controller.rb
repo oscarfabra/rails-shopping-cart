@@ -60,20 +60,42 @@ class OrdersController < ApplicationController
         OrderNotifier.received(@order).deliver
 
         # Sends orders details in json format to dummy payment gateway via post.
-        RestClient.post "http://localhost:3001/read_order", order_params.to_json,
-                        :content_type => :json, :accept => :json
-
-        response = RestClient.get "http://localhost:3001/payments"
-
-        pay_notice = ''
-        case response
-          when 200
-            pay_notice = 'Payment was received successfully.'
+        redirect_url = ''
+        RestClient.post('http://localhost:3001/read_order',
+                        order_params.to_json,
+                        :content_type => :json,
+                        :accept => :json) do |response, request, result, &block|
+          if [301, 302, 307].include? response.code
+            redirect_url = response.headers[:location]
+            logger.info "#{redirect_url} Response: #{response}"
+            logger.info "Following redirection..."
+            response.follow_redirection(request, result, &block)
           else
-            pay_notice = 'Unfortunately, payment was not received.'
+            logger.info "Response: #{response}"
+            logger.info "Returning..."
+            response.return!(request, result, &block)
+          end
         end
 
-        format.html { redirect_to store_url, notice: "Thank you for your order! #{pay_notice}" }
+        # Follow redirections for all request types and not only for get and head.
+        # RestClient.get('http://localhost:3001/read_order'){ |response, request, result, &block|
+        #   if [301, 302, 307].include? response.code
+        #     response.follow_redirection(request, result, &block)
+        #   else
+        #     response.return!(request, result, &block)
+        #   end
+        # }
+        # response = RestClient.get "http://localhost:3001/payments"
+        #
+        # pay_notice = ''
+        # case response
+        #   when 200
+        #     pay_notice = 'Payment was received successfully.'
+        #   else
+        #     pay_notice = 'Unfortunately, payment was not received.'
+        # end
+
+        format.html { redirect_to redirect_url, notice: "Thank you for your order!" }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
