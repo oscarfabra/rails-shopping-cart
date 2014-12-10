@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
+  include CurrentCart
+  before_action :set_cart # Guarantees that cart is going to be shown.
   skip_before_action :authorize
+
 
   def new
   end
