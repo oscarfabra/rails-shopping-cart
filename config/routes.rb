@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  controller :payments_server do
+    post 'make_payment' => :make_payment
+    get 'read_response' => :read_response
+  end
+
   get 'admin' => 'admin#index'  # Admin index.
 
   controller :sessions do
