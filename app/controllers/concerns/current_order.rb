@@ -17,6 +17,5 @@ module CurrentOrder
     def set_customer_details(order)
       order.customer_id = session[:customer_id]
       order.customer = Customer.find_by(id: order.customer_id)
-      # order.email =
     end
 end

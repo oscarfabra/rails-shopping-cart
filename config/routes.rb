@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'payments_proxy/read_response'
+
   controller :payments_server do
     post 'make_payment' => :make_payment
     get 'read_response' => :read_response
