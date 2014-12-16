@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   get 'payments_proxy/read_response'
 
-  controller :payments_server do
+  controller :payments_proxy do
     post 'make_payment' => :make_payment
-    get 'read_response' => :read_response
+    post 'read_response' => :read_response
   end
 
   get 'admin' => 'admin#index'  # Admin index.
