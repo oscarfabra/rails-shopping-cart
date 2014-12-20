@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
         # Sends orders details in json format to dummy payment gateway via post.
         redirect_url = make_payment(order_params, :json)
 
-        format.html { redirect_to redirect_url, notice: "Thank you for your order!" }
+        format.html { redirect_to redirect_url }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

@@ -9,21 +9,19 @@ class PaymentsProxyController < ApplicationController
   def read_response
     # TODO: Read response from payments gateway and send it to orders_controller.
     logger.info "Received data: #{params}"
-    #logger.info "notice hash: #{params[:payments_proxy]}"
+    # logger.info "payments_server hash: #{params[:payments_server]}"
 
-    redirect_to '/'
+    # Creates a new order for later retrieval.
+    # order = Order.new(order_reader_params)
 
-    # respond_to do |format|
-    #   if order.save!
-    #     session[:order_id] = order.id
-    #     format.html { redirect_to '/payments/new.html' }
-    #     format.json do  # render an html page instead of a JSON response.
-    #       redirect_to '/payments/new.html'
-    #     end
-    #   else
-    #     format.html { redirect_to '/payments/new.html' }
-    #     format.json { render json: params, status: :unprocessable_entity }
-    #   end
-    # end
+    notice = (params[response_code] == 'SUCCESS')?
+        'Payment was successfully made.' : "Payment couldn't be made."
+
+    respond_to do |format|
+      format.html { redirect_to '/', notice: notice }
+      format.json do  # render an html page instead of a JSON response.
+        redirect_to '/', notice: notice
+      end
+    end
   end
 end
