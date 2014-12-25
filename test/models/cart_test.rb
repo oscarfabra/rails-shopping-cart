@@ -11,10 +11,10 @@ class CartTest < ActiveSupport::TestCase
     [:coffee, :ruby, :rails].each do |product_name|
       product = products(product_name)
       item = cart.add_product(product.id)
-      assert_in_delta item.price, product.price, 0.001,
+      assert_in_delta item.unit_price, product.price, 0.001,
                    "cart line item price is incorrect"
       size += 1
-      total_price += item.price
+      total_price += item.unit_price
     end
     # Ensure line_items size increases accordingly
     assert_equal size, cart.line_items.size

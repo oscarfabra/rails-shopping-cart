@@ -1,14 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Depot Customer
   address: MyText
   email: user@example.org
   pay_type: Check
   payment_type_id: 1
 
 two:
-  name: MyString
   address: MyText
   email: MyString
   pay_type: Credit card

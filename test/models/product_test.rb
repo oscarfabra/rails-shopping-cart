@@ -6,7 +6,7 @@ class ProductTest < ActiveSupport::TestCase
   test "product attributes must not be empty" do
     product = Product.new
     assert product.invalid?
-    assert product.errors[:title].any?
+    assert product.errors[:name].any?
     assert product.errors[:description].any?
     assert product.errors[:price].any?
     assert product.errors[:image_url].any?
@@ -14,7 +14,7 @@ class ProductTest < ActiveSupport::TestCase
 
   test "product price must be positive and less than 10,000" do
     product = Product.new(
-        title: "My Book Title",
+        name: "My Book Title",
         description: "yyy",
         image_url: "zzz.jpg")
     product.price = -1
@@ -34,7 +34,7 @@ class ProductTest < ActiveSupport::TestCase
   # Helper method to test that we're validating the URL of the image
   def new_product(image_url)
     Product.new(
-        title: "My Book Title",
+        name: "My Book Title",
         description: "yyy",
         price: 1,
         image_url: image_url)
@@ -53,17 +53,17 @@ class ProductTest < ActiveSupport::TestCase
 
   test "product is not valid without a unique title - i18n" do
     product = Product.new(
-        title: products(:ruby).title,
+        name: products(:ruby).name,
         description: "yyy",
         price: 1,
         image_url: "fred.gif")
     assert product.invalid?
-    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:name]
   end
 
   test "image url must be unique" do
     product = Product.new(
-        title: "My Book Title",
+        name: "My Book Title",
         description: "yyy",
         price: 1,
         image_url: "ruby.png")  # A image_url already usec in fixtures
