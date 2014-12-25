@@ -4,10 +4,12 @@ one:
   id: 1
   firstname: Customer
   lastname: Depot
+  email: customer@example.org
   password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
   id: 2
   firstname: Admin
   lastname: Depot
+  email: admin@example.org
   password_digest: <%= BCrypt::Password.create('secret') %>
