@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   firstname: Customer
   lastname: Depot
   password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
+  id: 2
   firstname: Admin
   lastname: Depot
   password_digest: <%= BCrypt::Password.create('secret') %>

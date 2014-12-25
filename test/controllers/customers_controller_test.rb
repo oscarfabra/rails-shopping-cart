@@ -19,7 +19,8 @@ class CustomersControllerTest < ActionController::TestCase
   test "should create customer" do
     assert_difference('Customer.count') do
       post :create, customer: {
-                      name: 'Dave',
+                      firstname: 'Dave',
+                      lastname: 'Depot',
                       password: 'secret',
                       password_confirmation: 'secret' }
     end
@@ -40,7 +41,8 @@ class CustomersControllerTest < ActionController::TestCase
   test "should update customer" do
     patch :update, id: @customer,
           customer: {
-              name: @customer.name,
+              firstname: @customer.firstname,
+              lastname: @customer.lastname,
               password: 'secret',
               password_confirmation: 'secret' }
 

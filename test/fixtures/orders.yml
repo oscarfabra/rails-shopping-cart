@@ -5,9 +5,11 @@ one:
   email: user@example.org
   pay_type: Check
   payment_type_id: 1
+  customer_id: 1
 
 two:
   address: MyText
   email: MyString
   pay_type: Credit card
   payment_type_id: 2
+  customer_id: 1

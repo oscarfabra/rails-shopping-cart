@@ -61,9 +61,9 @@ class OrdersController < ApplicationController
         OrderNotifier.received(@order).deliver
 
         # Sends orders details in json format to dummy payment gateway via post.
-        redirect_url = make_payment(order_params, :json)
+        #redirect_url = make_payment(order_params, :json)
 
-        format.html { redirect_to redirect_url }
+        format.html { redirect_to store_path } #redirect_url }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

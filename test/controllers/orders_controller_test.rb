@@ -23,11 +23,11 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should create order" do
+    # Should comment out payment method call in orders_controller to test it.
     assert_difference('Order.count') do
       post :create, order: {
                       address: @order.address,
                       email: @order.email,
-                      name: @order.name,
                       pay_type: @order.pay_type,
                       payment_type_id: @order.payment_type_id }
     end
@@ -49,7 +49,6 @@ class OrdersControllerTest < ActionController::TestCase
       patch :update, id: @order, order: {
                        address: @order.address,
                        email: @order.email,
-                       name: @order.name,
                        pay_type: @order.pay_type,
                        payment_type_id: @order.payment_type_id,
                        ship_date: Time.now }
