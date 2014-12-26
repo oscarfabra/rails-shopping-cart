@@ -1,5 +1,9 @@
 <% if @orders.count > 0 %>
-  <h1>My Current Orders</h1>
+  <% if !admin_logged_in %>
+    <h1>My Current Orders</h1>
+  <% else %>
+    <h1>Current Orders</h1>
+  <% end %>
 
   <table class="orders_table">
     <thead>
@@ -30,6 +34,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= paginate @orders %>
+
 <% else %>
   <h1>You don't have any orders</h1>
 <% end %>

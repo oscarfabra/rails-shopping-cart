@@ -44,6 +44,9 @@ gem 'dot_secrets', github: 'rono23/dot_secrets'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Handles pagination.
+gem 'kaminari'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

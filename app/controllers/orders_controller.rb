@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   include CurrentCart
   include CurrentOrder
   include CurrentPayment
+  include CurrentUser
 
   before_action :set_cart # Guarantees that cart is going to be shown.
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -13,7 +14,14 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     # Retrieves orders from current customer ordered by created_at date.
-    @orders = Order.where(customer_id: session[:customer_id]).order(:created_at)
+    if !admin_logged_in
+      # For normal users, show only their orders.
+      @orders = Order.where(customer_id: session[:customer_id]).
+          order('created_at desc').page(params[:page])
+    else
+      # For admins, show all orders.
+      @orders = Order.order('created_at desc').page(params[:page])
+    end
   end
 
   # GET /orders/1
