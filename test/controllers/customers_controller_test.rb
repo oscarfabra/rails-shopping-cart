@@ -21,11 +21,12 @@ class CustomersControllerTest < ActionController::TestCase
       post :create, customer: {
                       firstname: 'Dave',
                       lastname: 'Depot',
-                      password: 'secret',
-                      password_confirmation: 'secret' }
+                      email: 'dave@example.org',
+                      password: 'secret123',
+                      password_confirmation: 'secret123' }
     end
 
-    assert_redirected_to customers_path
+    assert_redirected_to admin_path
   end
 
   test "should show customer" do
@@ -43,15 +44,16 @@ class CustomersControllerTest < ActionController::TestCase
           customer: {
               firstname: @customer.firstname,
               lastname: @customer.lastname,
-              password: 'secret',
-              password_confirmation: 'secret' }
+              email: @customer.email,
+              password: 'secret123',
+              password_confirmation: 'secret123' }
 
     assert_response :success
   end
 
   test "should destroy customer" do
     assert_difference('Customer.count', -1) do
-      delete :destroy, id: @customer
+      delete :destroy, id: 2  # A different customer
     end
 
     assert_redirected_to customers_path
