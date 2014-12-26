@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/home'
+  get 'static_pages/help'
+
   # get 'payments_proxy/read_response'
 
   controller :payments_proxy do
