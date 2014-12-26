@@ -35,7 +35,9 @@
     </tbody>
   </table>
 
-  <%= paginate @orders %>
+  <p class="pagination">
+    <%= paginate @orders %>
+  </p>
 
 <% else %>
   <h1>You don't have any orders</h1>

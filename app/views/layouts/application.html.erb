@@ -34,12 +34,15 @@
         <ul>
           <li><%= link_to 'All Products', products_path %></li>
           <li><%= link_to 'All Customers', customers_path %></li>
+          <li><%= link_to 'All Orders', orders_path %></li>
         </ul>
       <% end %>
       <!-- Displays options if any kind of user logged in. -->
       <% if user_logged_in %>
         <ul>
-          <li><%= link_to 'My Orders', orders_path %></li>
+          <% if !admin_logged_in %>
+            <li><%= link_to 'My Orders', orders_path %></li>
+          <% end %>
           <li><%= link_to 'My Details', customer_path(session[:customer_id]) %></li>
         </ul>
         <br>
