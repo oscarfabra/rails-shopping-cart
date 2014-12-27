@@ -1,36 +1,45 @@
 Rails.application.routes.draw do
 
-  get 'static_pages/home'
-  get 'static_pages/help'
-  get 'static_pages/about'
+  # Routes for static pages.
+  root    'static_pages#home', as: 'home'
+  get     'help'    =>  'static_pages#help'
+  get     'about'   =>  'static_pages#about'
 
   # get 'payments_proxy/read_response'
 
+  # Routes for payments.
   controller :payments_proxy do
     post 'make_payment' => :make_payment
     post 'read_response' => :read_response
   end
 
+  # Routes for admins.
   get 'admin' => 'admin#index'  # Admin index.
 
+  # Routes for sessions.
   controller :sessions do
     get 'login' => :new  # Replaces 'session/create' for simply 'login'
     post 'login' => :create
     delete 'logout' => :destroy
   end
 
+  # Routes for customers.
   resources :customers
+
+  # Routes for products.
   resources :products do
     get :who_bought, on: :member
   end
 
+  # Routes for orders, line_items and carts.
+  # TODO: Include the other controllers.
   scope '(:locale)' do
     resources :orders
     resources :line_items do
       put 'decrement', on: :member
     end
     resources :carts
-    root 'store#index', as: 'store'
+    get 'store' => 'store#index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

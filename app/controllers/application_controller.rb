@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    # Sets a different layout for each devise resource.
+    # Sets a different layout depending on controller.
     def resolve_layout
       if controller_name == 'static_pages'
         "static_pages" # static_pages_controller actions will use this.
