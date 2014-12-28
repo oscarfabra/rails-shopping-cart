@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
 
     # Sets a different layout depending on controller.
     def resolve_layout
-      if controller_name == 'store' and action_name == 'index'
-        "landing_page" # static_pages_controller actions will use this.
+      if controller_name == 'static_pages'
+        "static_pages" # static_pages_controller actions will use this.
       else
         "application" # default rails application layout.
       end

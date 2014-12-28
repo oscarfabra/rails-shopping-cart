@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rails Shopping Cart</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %>">
+  <div>
+    (Static pages layout)
+  </div>
+  <div id="main">
+    <%= yield %>
+  </div>
+</body>
+</html>
