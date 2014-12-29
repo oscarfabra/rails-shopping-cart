@@ -18,12 +18,12 @@ module ApplicationHelper
   end
 
   # Tells whether any kind of user is logged in.
-  def user_logged_in
+  def user_logged_in?
     session[:customer_id]
   end
 
   # Tells whether an admin user is logged in.
-  def admin_logged_in
+  def admin_logged_in?
     return false unless session[:customer_id]
 
     admin = Admin.find_by(customer_id: session[:customer_id])

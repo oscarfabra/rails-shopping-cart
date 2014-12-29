@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_i18n_locale_from_params
 
   # Determines the layout for each resource.
-  layout :resolve_layout
+  # layout :resolve_layout
 
   protected
 
