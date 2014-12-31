@@ -289,65 +289,82 @@ footer
 
 #slide-1
 {
-  padding-top: 110px;
-  padding-left: 20px;
-  display: inline-block;
-  background-image: url('/assets/landing-1.png');
+  padding-top: 180px;
+  background-image: url('/assets/landing-1.jpg');
   h1
   {
-    text-align: left;
-    color: $gray;
+    text-shadow: 1px 1px 1px #555;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  p
+  {
+    text-shadow: 1px 1px 1px #555;
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
   }
   .btn
   {
     display: inline-block;
     margin-top: 5px;
-    font-size: 1.1em;
+    text-shadow: none;
+    font-size: 0.9em;
   }
 }
 #slide-2
 {
+  color: $gray-darker;
   padding-top: 180px;
-  background-image: url('/assets/landing-2.png');
+  background-image: url('/assets/landing-2.jpg');
   h1
   {
-    text-shadow: 1px 1px 1px #555;
-    color: white;
+    color: $gray-darker;
     margin-bottom: 15px;
     text-align: center;
   }
   p
   {
-    text-shadow: 1px 1px 1px #555;
-    color: white;
     text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
   }
   .action-link
   {
-    text-shadow: none;
+    line-height: 90%;
+    color: royalblue;
+    &:hover
+    {
+      color: darkblue;
+    }
   }
 }
 #slide-3
 {
-  color: white;
-  padding-top: 105px;
-  background-image: url('/assets/landing-3.png');
-  text-shadow: 1px 1px 1px #555;
+  color: $gray-darker;
+  padding-top: 135px;
+  padding-left: 15px;
+  background-image: url('/assets/landing-3.jpg');
   h1
   {
-    text-align: center;
+    color: $gray-darker;
+    margin-bottom: 15px;
+    text-align: left;
   }
   p
   {
-    color: white;
-    text-align: center;
+    text-align: left;
+    font-size: 1.2em;
+    margin-bottom: 10px;
   }
   .action-link
   {
-    color: white;
+    line-height: 90%;
+    color: royalblue;
     &:hover
     {
-      color: $gray-medium-light;
+      color: darkblue;
     }
   }
 }
