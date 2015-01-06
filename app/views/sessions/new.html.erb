@@ -1,13 +1,13 @@
 <h1>Log In</h1>
 
 <div class="depot_form">
-  <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %></p>
-  <% end %>
-  <% if notice %>
-    <p id="notice"><%= notice %></p>
-  <% end %>
   <%= form_tag do %>
+    <% if flash[:alert] %>
+      <p id="notice"><%= flash[:alert] %></p>
+    <% end %>
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
     <fieldset>
       <div class="field">
         <%= label_tag :email, 'Email:' %>
