@@ -1,5 +1,5 @@
 <% if @orders.count > 0 %>
-  <% if !admin_logged_in %>
+  <% if !admin_logged_in? %>
     <h1>My Current Orders</h1>
   <% else %>
     <h1>Current Orders</h1>
