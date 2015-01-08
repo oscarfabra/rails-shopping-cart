@@ -289,82 +289,65 @@ footer
 
 #slide-1
 {
-  padding-top: 180px;
-  background-image: url('/assets/landing-1.jpg');
+  padding-top: 110px;
+  padding-left: 20px;
+  display: inline-block;
+  background-image: url('/assets/landing-1.png');
   h1
   {
-    text-shadow: 1px 1px 1px #555;
-    color: white;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  p
-  {
-    text-shadow: 1px 1px 1px #555;
-    font-size: 1.2em;
-    color: white;
-    text-align: center;
+    text-align: left;
+    color: $gray;
   }
   .btn
   {
     display: inline-block;
     margin-top: 5px;
-    text-shadow: none;
-    font-size: 0.9em;
+    font-size: 1.1em;
   }
 }
 #slide-2
 {
-  color: $gray-darker;
   padding-top: 180px;
-  background-image: url('/assets/landing-2.jpg');
+  background-image: url('/assets/landing-2.png');
   h1
   {
-    color: $gray-darker;
+    text-shadow: 1px 1px 1px #555;
+    color: white;
     margin-bottom: 15px;
     text-align: center;
   }
   p
   {
+    text-shadow: 1px 1px 1px #555;
+    color: white;
     text-align: center;
-    font-size: 1.2em;
-    margin-bottom: 10px;
   }
   .action-link
   {
-    line-height: 90%;
-    color: royalblue;
-    &:hover
-    {
-      color: darkblue;
-    }
+    text-shadow: none;
   }
 }
 #slide-3
 {
-  color: $gray-darker;
-  padding-top: 135px;
-  padding-left: 15px;
-  background-image: url('/assets/landing-3.jpg');
+  color: white;
+  padding-top: 105px;
+  background-image: url('/assets/landing-3.png');
+  text-shadow: 1px 1px 1px #555;
   h1
   {
-    color: $gray-darker;
-    margin-bottom: 15px;
-    text-align: left;
+    text-align: center;
   }
   p
   {
-    text-align: left;
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    color: white;
+    text-align: center;
   }
   .action-link
   {
-    line-height: 90%;
-    color: royalblue;
+    color: white;
     &:hover
     {
-      color: darkblue;
+      color: $gray-medium-light;
     }
   }
 }
