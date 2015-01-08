@@ -75,7 +75,7 @@ textarea
   text-align: center;
   p
   {
-    color: $gray;
+    color: $gray-light;
     margin-bottom: 0px;
     padding-bottom: 0px;
   }
@@ -93,36 +93,33 @@ h1, h2, h3, h4, h5, h6
 h1
 {
   font-family: 'Raleway', sans-serif;
-  font-size: 3.2em;
+  font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 20px;
   text-align: center;
-  color: $gray-darker;
 }
 
 h2
 {
-  font-family: 'Raleway', sans-serif;
   font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 20px;
   text-align: left;
   font-weight: normal;
-  color: $gray-darker;
+  color: $gray;
 }
 
 h3
 {
   font-family: 'Raleway', sans-serif;
   margin-bottom: 20px;
-  color: $gray-darker;
 }
 
 p
 {
   font-size: 1.1em;
   line-height: 1.7em;
-  color: $gray;
+  color: $gray-light;
   margin-bottom: 20px;
 }
 
@@ -155,7 +152,7 @@ ul
 {
   font-size: 1.1em;
   line-height: 1.5em;
-  color: $gray;
+  color: $gray-light;
 }
 
 a
@@ -207,7 +204,6 @@ a
     font-family: 'Raleway', sans-serif;
     letter-spacing: -1px;
     padding-top: 9px;
-    text-decoration: none;
     &:hover
     {
       color: royalblue;
@@ -225,8 +221,8 @@ footer
   margin-top: -1px;
   padding-top: 20px;
   margin-bottom: 90px;
-  border-top: 1px solid #333;
-  color: $gray;
+  border-top: 1px solid #555;
+  color: $gray-light;
   a
   {
     color: $gray;
@@ -408,14 +404,14 @@ footer
   }
   .slider-dots li 
   {
-    color: $gray;
+    color: #bbbcbc;
     display: inline;
     font-size: 30px;
     margin-right: 5px;
   }
   .slider-dots li.active-dot 
   {
-    color: $gray-darker;
+    color: #363636;
   }
 }
 
@@ -428,7 +424,7 @@ footer
 {
   position: relative;
   clear: both;
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $gray-lighter;
   background-size: cover;
   display: block;
   vertical-align: baseline;
@@ -444,7 +440,7 @@ footer
 {
   position: relative;
   clear: both;
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $gray-lighter;
   background-size: cover;
   display: block;
   vertical-align: baseline;
@@ -493,7 +489,6 @@ footer
 
 #feature-1
 {
-  border: 1px solid #777;
   width: 520px;
   height: 304px;
   display: block;
@@ -504,7 +499,6 @@ footer
 
 #feature-2
 {
-  border: 1px solid #777;
   width: 520px;
   height: 304px;
   display: block;
@@ -515,7 +509,6 @@ footer
 
 #feature-3
 {
-  border: 1px solid #777;
   width: 520px;
   height: 304px;
   display: block;
@@ -674,8 +667,8 @@ aside
   {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $gray-light;
-    color: $gray;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
     &:first-child
     {
       padding-left: 0;
@@ -724,7 +717,7 @@ aside
 
 input, textarea, select, .uneditable-input
 {
-  border: 1px solid #777;
+  border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -784,7 +777,7 @@ input
   {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid $gray-lighter;
   }
 }
 
@@ -823,7 +816,7 @@ input
   }
   .timestamp
   {
-    color: $gray;
+    color: $gray-light;
     display: block;
     margin-left: 60px;
   }
