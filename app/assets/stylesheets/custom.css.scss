@@ -757,19 +757,15 @@ input, textarea, select, .uneditable-input
 input
 {
   height: auto !important;
-  padding-left: 5px;
 }
 
 #error_explanation
 {
   font-size: 0.8em;
-  color: red;
-  h2 {
-    color: red;
-  }
+  color: royalblue;
   ul
   {
-    color: red;
+    color: royalblue;
     margin: 0 0 30px 0;
   }
 }

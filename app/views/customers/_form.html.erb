@@ -20,6 +20,7 @@
     <% end %>
 
     <fieldset>
+      <legend>Enter Your Details</legend>
       <div class="field">
         <%= f.label :email, 'Email:' %>
         <%= f.text_field :email, size: 40 %>
@@ -49,13 +50,6 @@
       <div class="actions">
         <%= f.submit %>
       </div>
-
-      <% if !user_logged_in? %>
-        <div class="actions">
-          Already a customer? <%= link_to t('.log_in'),
-          login_path, id: 'action-link' %>
-        </div>
-      <% end %>
     </fieldset>
   <% end %>
 </div>
