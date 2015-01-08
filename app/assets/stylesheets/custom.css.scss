@@ -571,6 +571,7 @@ footer
   display: block;
   margin: 0px;
   padding: 0px;
+  border: 1px solid #777;
   background-image: url('/assets/about-1.png');
 }
 
@@ -581,6 +582,7 @@ footer
   display: block;
   margin: 0px;
   padding: 0px;
+  border: 1px solid #777;
   background-image: url('/assets/about-2.png');
 }
 
@@ -618,6 +620,7 @@ footer
   display: block;
   margin: 0px;
   padding: 0px;
+  border: 1px solid #777;
   background-image: url('/assets/help-1.png');
 }
 
@@ -628,108 +631,8 @@ footer
   display: block;
   margin: 0px;
   padding: 0px;
+  border: 1px solid #777;
   background-image: url('/assets/contact-1.png');
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES THE USER PROFILE'S SIDEBAR
- *-----------------------------------------------------------*/
-
-aside
-{
-  section.user_info
-  {
-    margin-top: 20px;
-  }
-  section
-  {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child
-    {
-      border: 0;
-      padding-top: 0;
-    }
-    span
-    {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1
-    {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 7px;
-      margin-top: 0px;
-    }
-  }
-}
-
-.gravatar
-{
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit
-{
-  margin-top: 15px;
-  margin-bottom: 100px;
-}
-
-.stats
-{
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  a
-  {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-light;
-    color: $gray;
-    &:first-child
-    {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover
-    {
-      text-decoration: none;
-      color: darkblue;
-    }
-  }
-  strong
-  {
-    display: block;
-  }
-}
-
-.user_avatars
-{
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar
-  {
-    margin: 1px 1px;
-  }
-  a
-  {
-    padding: 0;
-  }
-}
-
-.users.follow
-{
-  padding: 0;
-}
-
-.follow_form
-{
-  display: block;
-  padding: 0px;
 }
 
 /*-------------------------------------------------------------
@@ -818,224 +721,4 @@ input
 {
   width: auto;
   margin-left: 0;
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES USERS INDEX
- *-----------------------------------------------------------*/
-
-.users
-{
-  list-style: none;
-  margin: 0;
-  li
-  {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray;
-  }
-}
-
-.pagination
-{
-  color: darkblue;
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES CART VIEWS
- *-----------------------------------------------------------*/
-
-.carts, #side #cart {
-  .item_price, .total_line {
-    text-align: right;
-  }
-  .total_line .total_cell {
-    font-weight: bold;
-    border-top: 1px solid #595;
-  }
-  table tr td {
-    padding: 5px;
-    vertical-align: top;
-  }
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES CUSTOMERS VIEWS
- *-----------------------------------------------------------*/
-
-.customers {
-  .customers_table {
-    border-collapse: collapse;
-    margin-left: 10px;
-    tr td {
-      padding: 5px 10px;
-      vertical-align: top;
-    }
-  }
-
-  .list_actions {
-    font-size:    x-small;
-    text-align:   right;
-    padding-left: 1em;
-  }
-
-  .list_line_even {
-    background:   #e0f8f8;
-  }
-
-  .list_line_odd {
-    background: #ffffff;
-  }
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES ORDERS VIEWS
- *-----------------------------------------------------------*/
-
-.orders {
-  .orders_table {
-    border-collapse: collapse;
-    margin-left: 10px;
-    tr td {
-      padding: 5px 10px;
-      vertical-align: top;
-    }
-  }
-
-  .list_actions {
-    font-size:    x-small;
-    text-align:   right;
-    padding-left: 1em;
-  }
-
-  .list_line_even {
-    background:   #e0f8f8;
-  }
-
-  .list_line_odd {
-    background: #ffffff;
-  }
-}
-
-.pagination {
-  text-align: center;
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES PRODUCTS VIEWS
- *-----------------------------------------------------------*/
-
-/* A product in the listings */
-.products {
-  table {
-    border-collapse: collapse;
-  }
-
-  table tr td {
-    padding: 5px;
-    vertical-align: top;
-  }
-
-  .list_image {
-    width:  60px;
-    height: 70px;
-  }
-
-  .list_description {
-    width: 60%;
-    dl {
-      margin: 0;
-    }
-    dt {
-      color:        #244;
-      font-weight:  bold;
-      font-size:    larger;
-    }
-    dd {
-      margin: 0;
-    }
-  }
-
-  .attr_description {
-    width: 20%;
-    dl {
-      margin: 0;
-    }
-    dt {
-      color:        #244;
-      font-weight:  bold;
-      font-size:    larger;
-    }
-    dd {
-      margin: 0;
-    }
-  }
-
-  .list_actions {
-    font-size:    x-small;
-    text-align:   right;
-    padding-left: 1em;
-  }
-
-  .list_line_even {
-    background:   #e0f8f8;
-  }
-
-  .list_line_odd {
-    background: #ffffff;
-  }
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES STORE VIEW
- *-----------------------------------------------------------*/
-
-.store {
-  h1 {
-    margin: 0;
-    padding-bottom: 0.5em;
-    font: 150% sans-serif;
-    color: #226;
-    border-bottom: 3px solid #77d;
-  }
-  .views_count {
-    display: inline-block;
-    float: right;
-    margin-top: 5px;
-  }
-  /* An entry in the store catalog */
-  .entry {
-    overflow: auto;
-    margin-top: 1em;
-    border-bottom: 1px dotted #77d;
-    min-height: 100px;
-    img {
-      width: 80px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      position: absolute;
-    }
-    h3 {
-      font-size: 120%;
-      font-family: sans-serif;
-      margin-left: 100px;
-      margin-top: 0;
-      margin-bottom: 2px;
-      color: #227;
-    }
-    p, div.price_line {
-      margin-left: 100px;
-      margin-top: 0.5em;
-      margin-bottom: 0.8em;
-
-      form, div {
-        display: inline;
-      }
-    }
-    .price {
-      color: #44a;
-      font-weight: bold;
-      margin-right: 3em;
-    }
-  }
 }
