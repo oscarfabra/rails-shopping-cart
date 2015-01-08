@@ -49,9 +49,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Handles pagination.
 gem 'kaminari'
 
-# Handles font-awesome fonts.
-gem "font-awesome-rails"
-
 # Use unicorn as the app server
 # gem 'unicorn'
 
