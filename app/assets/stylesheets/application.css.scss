@@ -153,3 +153,12 @@
   margin-left: 3em;
   display: inline-block;
 }
+
+/* Adds local fonts */
+@font-face {
+    font-family: 'FontAwesome';
+    src: url(font-path('fontawesome-webfont.eot') + "?#iefix") format('embedded-opentype'),
+         url(font-path('fontawesome-webfont.woff')) format('woff'), 
+         url(font-path('fontawesome-webfont.ttf'))  format('truetype'),
+         url(font-path('fontawesome-webfont.svg') + "#MyFont") format('svg');
+}
