@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       put 'decrement', on: :member
     end
     resources :carts
-    get 'store' => 'store#index', as: 'store'
+    get 'store' => 'store#index', as: 'root'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

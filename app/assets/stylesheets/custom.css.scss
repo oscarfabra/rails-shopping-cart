@@ -81,18 +81,6 @@ textarea
   }
 }
 
-#notice {
-  color: red;
-  h2 {
-    color: red;
-  }
-  ul
-  {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
 /*-------------------------------------------------------------
  *  CUSTOMIZES TYPOGRAPHY
  *-----------------------------------------------------------*/
@@ -737,7 +725,7 @@ aside
  *-----------------------------------------------------------*/
 
 form {
-  width: 50%;
+  width: 60%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -768,16 +756,8 @@ input, textarea, select, .uneditable-input
 
 input
 {
-  height: auto !important;  
+  height: auto !important;
   padding-left: 5px;
-}
-
-.actions {
-  input {
-    font-weight: bold;
-    margin-top: 10px;
-    padding: 4px;
-  }
 }
 
 #error_explanation
@@ -842,200 +822,62 @@ input
 }
 
 /*-------------------------------------------------------------
- *  CUSTOMIZES CART VIEWS
+ *  CUSTOMIZES MICROPOSTS
  *-----------------------------------------------------------*/
 
-.carts, #side #cart {
-  .item_price, .total_line {
-    text-align: right;
+.microposts
+{
+  list-style: none;
+  padding: 0;
+  li
+  {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
   }
-  .total_line .total_cell {
-    font-weight: bold;
-    border-top: 1px solid #595;
+  .user
+  {
+    margin-top: 5em;
+    padding-top: 0;
   }
-  table tr td {
-    padding: 5px;
-    vertical-align: top;
-  }
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES CUSTOMERS VIEWS
- *-----------------------------------------------------------*/
-
-.customers {
-  .customers_table {
-    border-collapse: collapse;
-    margin-left: 10px;
-    tr td {
-      padding: 5px 10px;
-      vertical-align: top;
+  .content
+  {
+    display: block;
+    margin-left: 60px;
+    img
+    {
+      display: block;
+      padding: 5px 0;
     }
   }
-
-  .list_actions {
-    font-size:    x-small;
-    text-align:   right;
-    padding-left: 1em;
+  .timestamp
+  {
+    color: $gray;
+    display: block;
+    margin-left: 60px;
   }
-
-  .list_line_even {
-    background:   #e0f8f8;
-  }
-
-  .list_line_odd {
-    background: #ffffff;
-  }
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES ORDERS VIEWS
- *-----------------------------------------------------------*/
-
-.orders {
-  .orders_table {
-    border-collapse: collapse;
-    margin-left: 10px;
-    tr td {
-      padding: 5px 10px;
-      vertical-align: top;
-    }
-  }
-
-  .list_actions {
-    font-size:    x-small;
-    text-align:   right;
-    padding-left: 1em;
-  }
-
-  .list_line_even {
-    background:   #e0f8f8;
-  }
-
-  .list_line_odd {
-    background: #ffffff;
-  }
-}
-
-.pagination {
-  text-align: center;
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES PRODUCTS VIEWS
- *-----------------------------------------------------------*/
-
-/* A product in the listings */
-.products {
-  table {
-    border-collapse: collapse;
-  }
-
-  table tr td {
-    padding: 5px;
-    vertical-align: top;
-  }
-
-  .list_image {
-    width:  60px;
-    height: 70px;
-  }
-
-  .list_description {
-    width: 60%;
-    dl {
-      margin: 0;
-    }
-    dt {
-      color:        #244;
-      font-weight:  bold;
-      font-size:    larger;
-    }
-    dd {
-      margin: 0;
-    }
-  }
-
-  .attr_description {
-    width: 20%;
-    dl {
-      margin: 0;
-    }
-    dt {
-      color:        #244;
-      font-weight:  bold;
-      font-size:    larger;
-    }
-    dd {
-      margin: 0;
-    }
-  }
-
-  .list_actions {
-    font-size:    x-small;
-    text-align:   right;
-    padding-left: 1em;
-  }
-
-  .list_line_even {
-    background:   #e0f8f8;
-  }
-
-  .list_line_odd {
-    background: #ffffff;
-  }
-}
-
-/*-------------------------------------------------------------
- *  CUSTOMIZES STORE VIEW
- *-----------------------------------------------------------*/
-
-.store {
-  h1 {
-    margin: 0;
-    padding-bottom: 0.5em;
-    font: 150% sans-serif;
-    color: #226;
-    border-bottom: 3px solid #77d;
-  }
-  .views_count {
-    display: inline-block;
-    float: right;
+  .gravatar
+  {
+    float: left;
+    margin-right: 10px;
     margin-top: 5px;
   }
-  /* An entry in the store catalog */
-  .entry {
-    overflow: auto;
-    margin-top: 1em;
-    border-bottom: 1px dotted #77d;
-    min-height: 100px;
-    img {
-      width: 80px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      position: absolute;
-    }
-    h3 {
-      font-size: 120%;
-      font-family: sans-serif;
-      margin-left: 100px;
-      margin-top: 0;
-      margin-bottom: 2px;
-      color: #227;
-    }
-    p, div.price_line {
-      margin-left: 100px;
-      margin-top: 0.5em;
-      margin-bottom: 0.8em;
+}
 
-      form, div {
-        display: inline;
-      }
-    }
-    .price {
-      color: #44a;
-      font-weight: bold;
-      margin-right: 3em;
-    }
+aside
+{
+  textarea
+  {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture
+{
+  font-size: 0.8em;
+  margin-top: 10px;
+  input
+  {
+    border: 0;
   }
 }
