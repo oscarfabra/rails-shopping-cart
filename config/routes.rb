@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  # Routes for static pages.
-  root    'static_pages#home', as: 'home'
-  get     'help'    =>  'static_pages#help'
-  get     'about'   =>  'static_pages#about'
-
   # get 'payments_proxy/read_response'
 
   # Routes for payments.
@@ -39,7 +34,7 @@ Rails.application.routes.draw do
       put 'decrement', on: :member
     end
     resources :carts
-    get 'store' => 'store#index'
+    root 'store#index', as: 'store'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
