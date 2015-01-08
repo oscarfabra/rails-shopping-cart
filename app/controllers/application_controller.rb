@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    # Sets a different layout depending on controllers and actions.
+    # Sets a different layout depending on controller.
     def resolve_layout
       if (controller_name == 'static_pages' || 
         (controller_name == 'sessions' && action_name == 'new') || 
