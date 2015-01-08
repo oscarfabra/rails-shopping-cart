@@ -59,7 +59,7 @@ Rails.application.configure do
   # Configure mailer with Gmail.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'rails-depot-app.herokuapp.com'
+  host = 'rails-shopping-cart.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings =
       {

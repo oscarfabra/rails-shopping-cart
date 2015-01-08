@@ -1,12 +1,32 @@
 class ApplicationController < ActionController::Base
+
   # Prevent CSRF attacks by raising an exception.
   protect_from_forgery with: :exception
+
+  # Auxiliary methods.
+  include CurrentUser
 
   # Causes the authorize method to be called before every action in application.
   before_action :authorize
   before_action :set_i18n_locale_from_params
 
+  # Determines the layout for each resource.
+  layout :resolve_layout
+
   protected
+
+    # Sets a different layout depending on controllers and actions.
+    def resolve_layout
+      if (controller_name == 'static_pages' || 
+        (controller_name == 'sessions' && action_name == 'new') || 
+        (controller_name == 'customers' && action_name == 'new')) &&
+        (!user_logged_in)
+        "static_pages" # static_pages_controller actions will use this.
+      else
+        "application" # default rails application layout.
+      end
+    end
+
     def authorize
       # Selects authorization method depending on request format.
       if request.format == Mime::HTML || request.format == MIME::JS
