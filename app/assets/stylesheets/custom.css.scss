@@ -230,7 +230,6 @@ footer
   a
   {
     color: $gray;
-    text-decoration: none;
     &:hover { color: darkblue; }
   }
   small
@@ -723,28 +722,6 @@ aside
 /*-------------------------------------------------------------
  *  CUSTOMIZES FORMS
  *-----------------------------------------------------------*/
-
-form {
-  width: 60%;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-fieldset {
-  text-align: left;
-
-  legend {
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 2em;
-    padding-top: 15px;
-    padding-bottom: 5px;
-    border-bottom: none;
-  }
-}
 
 input, textarea, select, .uneditable-input
 {
