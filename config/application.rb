@@ -21,8 +21,5 @@ module RailsDepotApplication
     # config.i18n.default_locale = :de
 
     I18n.config.enforce_available_locales = false
-    
-    # add app/assets/fonts to the assets path
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

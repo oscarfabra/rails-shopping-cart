@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rails Shopping Cart</title>
-  <%= favicon_link_tag '/favicon.ico' %>
+  <title>Rails Depot App</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Pacifico", media: 'all', type: 'text/css' %>
-  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Raleway:400,700", media: 'all', type: 'text/css' %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
@@ -33,7 +30,7 @@
         <br>
       </ul>
       <!-- Displays administrative options if admin logged in. -->
-      <% if admin_logged_in? %>
+      <% if admin_logged_in %>
         <ul>
           <li><%= link_to 'All Products', products_path %></li>
           <li><%= link_to 'All Customers', customers_path %></li>
@@ -41,9 +38,9 @@
         </ul>
       <% end %>
       <!-- Displays options if any kind of user logged in. -->
-      <% if user_logged_in? %>
+      <% if user_logged_in %>
         <ul>
-          <% if !admin_logged_in? %>
+          <% if !admin_logged_in %>
             <li><%= link_to 'My Orders', orders_path %></li>
           <% end %>
           <li><%= link_to 'My Details', customer_path(session[:customer_id]) %></li>
@@ -52,7 +49,7 @@
         <%= button_to 'Logout', logout_path, method: :delete %>
       <% end %>
       <!-- Displays log in and sign up options if no user logged in. -->
-      <% if !user_logged_in? and !admin_logged_in? %>
+      <% if !user_logged_in and !admin_logged_in %>
         <ul>
           <li><%= link_to t('.log_in'), login_path %></li>
           <li><%= link_to t('.sign_up'), new_customer_path %></li>
