@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6
 
 h1
 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Arvo', sans-serif;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 20px;
@@ -111,7 +111,7 @@ h2
 
 h3
 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Arvo', sans-serif;
   margin-bottom: 20px;
 }
 
@@ -157,11 +157,11 @@ ul
 
 a
 {
-  color: royalblue;
+  color: red;
   text-decoration: none;
   &:hover
   {
-    color: darkblue;
+    color: darkred;
     text-decoration: none;
   }
 }
@@ -179,18 +179,18 @@ a
 
 .navbar
 {
-  background-color: $gray-darker;
+  background-color: $gray-lighter;
   text-transform: uppercase;
-  border-bottom: 1px solid #555;
-  opacity: 0.8;
-  #navbar-link
+  border-bottom: 1px solid #ddd;
+  opacity: 0.7;
+  a
   {
-    color: $gray-lighter;
+    color: $gray-darker;
     text-decoration: none;
-    background-color: $gray-darker;
     &:hover
     {
-      color: royalblue;
+      color: darkred;
+      background-color: transparent;
       text-decoration: none;
     }
   }
@@ -200,13 +200,13 @@ a
     margin-right: 10px;
     margin-left: 10px;
     font-size: 1.7em;
-    color: $gray-lighter;
-    font-family: 'Raleway', sans-serif;
+    color: $gray-darker;
+    font-family: 'Arvo', sans-serif;
     letter-spacing: -1px;
     padding-top: 9px;
     &:hover
     {
-      color: royalblue;
+      color: darkred;
       text-decoration: none;    
     }
   }
@@ -221,12 +221,12 @@ footer
   margin-top: -1px;
   padding-top: 20px;
   margin-bottom: 90px;
-  border-top: 1px solid #555;
+  border-top: 1px solid #ddd;
   color: $gray-light;
   a
   {
     color: $gray;
-    &:hover { color: darkblue; }
+    &:hover { color: darkred; }
   }
   small
   {
@@ -275,7 +275,7 @@ footer
   background-size: cover;
   height: 550px !important;
   width: 100% !important;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #ddd;
   display: none;
   position: absolute;
   top: 0;
@@ -562,7 +562,7 @@ footer
   {
     content: '✎';   
     margin-left: -1em; margin-right: .100em;
-    color: royalblue;
+    color: red;
   }
   ul
   {
@@ -660,7 +660,7 @@ aside
     &:hover
     {
       text-decoration: none;
-      color: darkblue;
+      color: darkred;
     }
   }
   strong
@@ -714,10 +714,10 @@ input
 #error_explanation
 {
   font-size: 0.8em;
-  color: royalblue;
+  color: red;
   ul
   {
-    color: royalblue;
+    color: red;
     margin: 0 0 30px 0;
   }
 }
@@ -766,7 +766,7 @@ input
 
 .pagination
 {
-  color: darkblue;
+  color: darkred;
 }
 
 /*-------------------------------------------------------------
