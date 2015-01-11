@@ -48,8 +48,13 @@
         <%= f.password_field :password_confirmation, size: 40 %>
       </div>
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Sign Up" %>
       </div>
+      <% if !user_logged_in %>
+        <div class="actions">
+          Already a user? <%= link_to t('.log_in'), login_path %>
+        </div>
+      <% end %>
     </fieldset>
   <% end %>
 </div>

@@ -11,7 +11,7 @@ es:
 
   layouts: # views/layouts
     application:  # application.html.erb
-      title_html: "Sitio E-commerce de Prueba"
+      title_html: "Carrito de Compras de Prueba"
       home:       "Inicio"
       log_in:     "Ingresar"
       sign_up:    "Registrarse"

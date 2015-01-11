@@ -32,7 +32,7 @@ en:
 
   layouts:  # views/layouts
     application:  # application.html.erb
-      title_html: "Sample E-commerce Site"
+      title_html: "Sample Shopping Cart"
       home:       "Home"
       log_in:     "Log In"
       sign_up:    "Sign Up"
